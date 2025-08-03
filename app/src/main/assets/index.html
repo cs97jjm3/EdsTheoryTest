@@ -2,60 +2,61 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Ed's Theory Test</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <style>
-    * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', sans-serif; }
-    body { background: #f7f9fc; display: flex; flex-direction: column; height: 90vh; }
-    .hero {
-      background: url('cartoon_banner.png') center/cover no-repeat;
-      height: 55vh;
-      position: relative;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-    }
-    .hero h1 {
-      color: #fff;
-      font-size: 2em;
-      background: rgba(0, 0, 0, 0.4);
-      padding: 0.5em 1em;
-      border-radius: 8px;
-    }
-    .content {
-      flex: 1;
-      padding: 1em;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      gap: 1em;
-    }
-    .btn {
-      padding: 1em;
-      font-size: 1.2em;
-      background: #007aff;
-      color: white;
-      border: none;
-      border-radius: 6px;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.8);
-      text-align: center;
-      text-decoration: none;
-    }
-    .btn.donate {
-      background: #ff416c;
-    }
-  </style>
+    <meta charset="UTF-8" />
+    <title>UK Theory Test - Home</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <style>
+        body { background-color: #f7f9fc; font-family: 'Segoe UI', sans-serif; }
+        .hero {
+          background: url('cartoon_banner.png') center/cover no-repeat;
+          height: 70vh;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+        }
+        .hero h1 {
+          color: #fff;
+          font-size: 2.5rem;
+          background: rgba(0, 0, 0, 0.5);
+          padding: 0.5em 1em;
+          border-radius: 8px;
+        }
+        .btn {
+          display: block;
+          width: 100%;
+          text-align: center;
+          padding: 1rem;
+          margin-bottom: 1rem;
+          font-size: 1.125rem;
+          background-color: #007aff;
+          color: white;
+          border-radius: 0.5rem;
+          box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+          text-decoration: none;
+        }
+        .btn:hover {
+          background-color: #005bb5;
+        }
+    </style>
 </head>
-<body>
-  <div class="hero">
+<body class="text-center">
 
-  </div>
-  <div class="content">
+<div class="hero">
+</div>
 
-    <a href="randomized_theory_test.html" class="btn">🚦 Start Theory Test</a>
-    <a href="support.html" class="btn donate">❤️ Donate to Support Ed</a>
-    <a href="driving_test_questions.html" class="btn"> On Test- Show Me</a>
-  </div>
+<main class="max-w-md mx-auto p-4 mt-6">
+    <a href="randomized_theory_test.html" class="btn">📋 Start Theory Test</a>
+    <a href="road_sign_quiz.html" class="btn">🚧 Road Sign Quiz</a>
+    <a href="uk_road_signs_mobile_friendly_final.html" class="btn">💡 Road Sign Gallery</a>
+    <a href="vehicle_safety_questions.html" class="btn">🛑 Vehicle Safety Questions</a>
+    <a href="support.html" class="btn">❤️ Support Ed</a>
+    <a href="about.html" class="btn">About Ed</a>
+
+    <p><br></p>
+    v.2.0.0
+
+</main>
+
 </body>
 </html>

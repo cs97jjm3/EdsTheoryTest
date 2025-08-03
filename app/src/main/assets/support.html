@@ -1,24 +1,49 @@
 
 <!DOCTYPE html>
-<html>
+<html lang="en-GB">
 <head>
-  <meta charset="UTF-8">
-  <title>Support This App</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
   <style>
-    body { font-family: sans-serif; text-align: center; padding: 20px; }
-    img { width: 80%; max-width: 350px; height: auto; margin-top: 20px; border: 1px solid #ccc; border-radius: 10px; }
-    button { margin-top: 20px; padding: 12px 24px; font-size: 16px; background-color: #0070ba; color: white; border: none; border-radius: 6px; }
-    button:hover { background-color: #005c99; }
+    body { background-color: #f7f9fc; font-family: 'Segoe UI', sans-serif; }
+    .btn {
+      display: inline-block;
+      text-align: center;
+      padding: 0.75rem 1.5rem;
+      font-size: 1rem;
+      background-color: #007aff;
+      color: white;
+      border-radius: 0.5rem;
+      margin: 0.5rem 0;
+      text-decoration: none;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+    .btn:hover { background-color: #005bb5; }
+    .back-button {
+      background-color: #e5e7eb;
+      color: #111827;
+      padding: 0.5rem 1rem;
+      border-radius: 0.375rem;
+      font-weight: 600;
+      margin-top: 1rem;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.06);
+    }
+    .back-button:hover { background-color: #d1d5db; }
   </style>
 </head>
-<body>
-<p><br></br></p><p><br></br></p>
+<body style="max-width: 600px; margin: 0 auto; padding: 20px;">
+<p><br></p><p><br></p>
 <h2>Support This App</h2>
   <p>This app is completely free. If you’ve found it helpful, consider supporting <strong>James Murrell</strong> by scanning the QR code or clicking the button below.</p>
   <img src="pp_my_qrcode_1753473772617.jpg" alt="PayPal QR Code"><br>
-  <a href="https://www.paypal.me/JamesMurrell" target="_blank"><button>Donate via PayPal</button></a>
-<button class="back-button" onclick="window.history.back()">Go Back</button>
-<p><br></br></p><p><br></br></p>
+  <a href="https://www.paypal.me/JamesMurrell" target="_blank"><button class="btn">Donate via PayPal</button></a>
+
+<button onclick="window.history.back()" class="bg-gray-300 hover:bg-gray-400 text-black font-semibold py-2 px-4 rounded shadow">
+  ⬅️ Go Back
+</button>
+<p><br></p><p><br></p>
+v.2.0.0
 
 </body>
 </html>
