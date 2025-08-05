@@ -1,14 +1,17 @@
 package com.example.edstheorytest;
 
 import android.os.Bundle;
+import android.util.Log; // <-- Add this import
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
+
+import androidx.activity.OnBackPressedCallback;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.view.WindowCompat;
 
 public class MainActivity extends AppCompatActivity {
-    WebView webview;
+    private WebView webView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -16,18 +19,30 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        webview = findViewById(R.id.webview);
-        webview.setWebViewClient(new WebViewClient());
+        webView = findViewById(R.id.webview);
 
-        WebSettings webSettings = webview.getSettings();
-        webSettings.setJavaScriptEnabled(true);  // ✅ Needed for your interactive HTML
+        webView.setWebViewClient(new WebViewClient());
 
-        // ✅ Extra safety settings for local content
-        webSettings.setAllowFileAccess(false);
-        webSettings.setAllowUniversalAccessFromFileURLs(false);
-        webSettings.setAllowFileAccessFromFileURLs(false);
+        WebSettings webSettings = webView.getSettings();
+        webSettings.setJavaScriptEnabled(true);
+        webSettings.setDomStorageEnabled(true); // Required for local nav and storage
+        webSettings.setAllowFileAccess(true);
+        webSettings.setAllowUniversalAccessFromFileURLs(true);
 
-        // Always load the new home screen
-        webview.loadUrl("file:///android_asset/index.html");
+        webView.loadUrl("file:///android_asset/index.html");
+
+        // Disable back gesture if there's no history
+        getOnBackPressedDispatcher().addCallback(this, new OnBackPressedCallback(true) {
+            @Override
+            public void handleOnBackPressed() {
+                if (webView.canGoBack()) {
+                    webView.goBack();
+                } else {
+                    // ⛔ Back button and gesture now do nothing
+                    // You can show a Toast or custom exit logic here if you want
+                }
+            }
+        });
+
     }
 }

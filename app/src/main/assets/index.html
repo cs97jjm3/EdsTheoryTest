@@ -5,8 +5,7 @@
     <meta charset="UTF-8" />
     <title>UK Theory Test - Home</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
-    <style>
+    <link href="tailwind.min.css" rel="stylesheet">    <style>
         body { background-color: #f7f9fc; font-family: 'Segoe UI', sans-serif; }
         .hero {
           background: url('cartoon_banner.png') center/cover no-repeat;
@@ -38,6 +37,30 @@
         .btn:hover {
           background-color: #005bb5;
         }
+      .menu {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    max-width: 400px;
+    margin: 2rem auto;
+    padding: 1rem;
+  }
+
+  .menu a {
+    display: block;
+    text-decoration: none;
+    background-color: #005bb5; /* dark gray */
+    color: white;
+    padding: 0.75rem 1rem;
+    border-radius: 8px;
+    font-size: 1.1rem;
+    text-align: center;
+    transition: background-color 0.2s ease;
+  }
+
+  .menu a:hover {
+    background-color: #111827;
+  }
     </style>
 </head>
 <body class="text-center">
@@ -45,18 +68,18 @@
 <div class="hero">
 </div>
 
-<main class="max-w-md mx-auto p-4 mt-6">
+<div class="menu">
     <a href="randomized_theory_test.html" class="btn">📋 Start Theory Test</a>
     <a href="road_sign_quiz.html" class="btn">🚧 Road Sign Quiz</a>
     <a href="uk_road_signs_mobile_friendly_final.html" class="btn">💡 Road Sign Gallery</a>
     <a href="vehicle_safety_questions.html" class="btn">🛑 Vehicle Safety Questions</a>
     <a href="support.html" class="btn">❤️ Support Ed</a>
-    <a href="about.html" class="btn">About Ed</a>
+    <a href="about.html">ℹ️ About Ed</a>
 
     <p><br></p>
     v.2.0.0
 
-</main>
+</div>
 
 </body>
 </html>
