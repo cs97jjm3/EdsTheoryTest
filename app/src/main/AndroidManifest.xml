@@ -10,8 +10,7 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-    android:theme="@style/Theme.EdsTheoryTest"
-        android:enableOnBackInvokedCallback="true">
+    android:theme="@style/Theme.EdsTheoryTest">
 
     <activity android:name=".LauncherActivity" android:exported="true" android:theme="@style/Theme.EdsTheoryTest.NoActionBar">
         <intent-filter>
