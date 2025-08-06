@@ -2,70 +2,68 @@
 
 <html lang="en">
 <head>
-    <meta charset="utf-8"/>
-    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-    <title>UK Driving Theory Test - Complete DVSA Database (200+ Questions)</title>
-    <script src="js/react.production.min.js"></script>
-    <script src="js/react-dom.production.min.js"></script>
-    <!-- Only if you are NOT pre-transpiling: -->
-    <script src="js/babel.min.js"></script>
-    <link href="tailwind.min.css" rel="stylesheet">
-    <style>
-        #root { padding-top: 1rem; }
-                body { margin: 0; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif; }
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>UK Driving Theory Test - Complete DVSA Database (200+ Questions)</title>
+<script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+<script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+<script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+<script src="https://cdn.tailwindcss.com"></script>
+<style>
+        body { margin: 0; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif; }
     </style>
 </head>
 <body>
 <div id="root"></div>
 <script type="text/babel">
-    const { useState, useEffect } = React;
+        const { useState, useEffect } = React;
 
-    // Lucide React icons (simplified versions)
-    const RotateCcw = ({ size = 24, className = "" }) => (
-        <svg className={className} width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-            <path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/>
-            <path d="M3 3v5h5"/>
-        </svg>
-    );
+        // Lucide React icons (simplified versions)
+        const RotateCcw = ({ size = 24, className = "" }) => (
+            <svg className={className} width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                <path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/>
+                <path d="M3 3v5h5"/>
+            </svg>
+        );
 
-    const CheckCircle = ({ size = 24, className = "" }) => (
-        <svg className={className} width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-            <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
-            <path d="m9 11 3 3L22 4"/>
-        </svg>
-    );
+        const CheckCircle = ({ size = 24, className = "" }) => (
+            <svg className={className} width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
+                <path d="m9 11 3 3L22 4"/>
+            </svg>
+        );
 
-    const XCircle = ({ size = 24, className = "" }) => (
-        <svg className={className} width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-            <circle cx="12" cy="12" r="10"/>
-            <path d="m15 9-6 6"/>
-            <path d="m9 9 6 6"/>
-        </svg>
-    );
+        const XCircle = ({ size = 24, className = "" }) => (
+            <svg className={className} width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                <circle cx="12" cy="12" r="10"/>
+                <path d="m15 9-6 6"/>
+                <path d="m9 9 6 6"/>
+            </svg>
+        );
 
-    const Clock = ({ size = 24, className = "" }) => (
-        <svg className={className} width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-            <circle cx="12" cy="12" r="10"/>
-            <path d="M12 6v6l4 2"/>
-        </svg>
-    );
+        const Clock = ({ size = 24, className = "" }) => (
+            <svg className={className} width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                <circle cx="12" cy="12" r="10"/>
+                <path d="M12 6v6l4 2"/>
+            </svg>
+        );
 
-    const Target = ({ size = 24, className = "" }) => (
-        <svg className={className} width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-            <circle cx="12" cy="12" r="10"/>
-            <circle cx="12" cy="12" r="6"/>
-            <circle cx="12" cy="12" r="2"/>
-        </svg>
-    );
+        const Target = ({ size = 24, className = "" }) => (
+            <svg className={className} width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                <circle cx="12" cy="12" r="10"/>
+                <circle cx="12" cy="12" r="6"/>
+                <circle cx="12" cy="12" r="2"/>
+            </svg>
+        );
 
-    const BookOpen = ({ size = 24, className = "" }) => (
-        <svg className={className} width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-            <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/>
-            <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/>
-        </svg>
-    );
+        const BookOpen = ({ size = 24, className = "" }) => (
+            <svg className={className} width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/>
+                <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/>
+            </svg>
+        );
 
-const ALL_QUESTIONS = [
+ const ALL_QUESTIONS = [
 {question: "What is the national speed limit on a single carriageway road for cars and motorcycles?",options: ["50 mph", "60 mph", "70 mph", "40 mph"],correct: 1,explanation: "The national speed limit on single carriageway roads is 60 mph for cars and motorcycles.",category: "Speed Limits"},
 {question: "What is the speed limit in a built-up area unless otherwise indicated?",options: ["20 mph", "40 mph", "30 mph", "25 mph"],correct: 2,explanation: "Built-up areas have a default speed limit of 30 mph unless signs indicate otherwise.",category: "Speed Limits"},
 {question: "What is the national speed limit on dual carriageways for cars?",options: ["60 mph", "80 mph", "50 mph", "70 mph"],correct: 3,explanation: "Cars can travel at 70 mph on dual carriageways and motorways.",category: "Speed Limits"},
@@ -274,643 +272,550 @@ const ALL_QUESTIONS = [
 { question: "What should you do with old tyres?", options: ["Dispose of them at an authorised centre", "Put them in household waste", "Burn them", "Bury them in the garden"], correct: 0, explanation: "Tyres must be disposed of properly at authorised recycling centres.", category: "Environmental" },
 { question: "How can you reduce noise pollution?", options: ["Avoid using the horn unnecessarily", "Use the horn frequently", "Rev the engine when stationary", "Play loud music"], correct: 0, explanation: "Avoid unnecessary horn use and aggressive driving to reduce noise pollution.", category: "Environmental" },
 { question: "How can you drive more efficiently?", options: ["Maintain steady speeds and avoid harsh acceleration", "Drive as fast as possible", "Use higher gears at low speeds", "Brake hard and accelerate quickly"], correct: 0, explanation: "Smooth, steady driving uses less fuel and produces fewer emissions.", category: "Environmental" },
-{question: "When may you overtake on the left?", options: ["When the vehicle in front is signalling to turn right", "On a one-way street", "When traffic is moving slowly in queues", "All of the above"], correct: 3, explanation: "You can overtake on the left if the vehicle ahead is turning right, on a one-way street, or in slow-moving queues where traffic on your right is moving slower.", category: "Overtaking"},
-{question: "What does a single yellow line along the side of the road mean?", options: ["No parking during times shown on a nearby sign", "No parking at any time", "Parking limited to 30 minutes", "Loading bay only"], correct: 0, explanation: "A single yellow line indicates waiting restrictions that apply during times shown on a nearby sign.", category: "Parking"},
-{question: "You are on a motorway. What does it mean if the car in front shows its hazard warning lights for a short time?", options: ["There is a hazard or obstruction ahead", "They are thanking you for letting them in", "They intend to change lanes", "Their brakes are faulty"], correct: 0, explanation: "On a motorway or unrestricted dual carriageway, hazard lights can be used to warn traffic behind of a hazard or obstruction ahead.", category: "Motorway Driving"},
-{question: "What is the main hazard you should be aware of when following a cyclist?", options: ["The cyclist may swerve out into the road", "The cyclist may be going very slowly", "The cyclist may not signal correctly", "The cyclist may dismount suddenly"], correct: 0, explanation: "Cyclists may need to swerve to avoid potholes or drains, so always give them plenty of room.", category: "Vulnerable Road Users"},
-{question: "When approaching a level crossing with barriers down and lights flashing, what should you do?", options: ["Wait until the barriers rise and lights stop flashing", "Cross carefully if no train is visible", "Zig-zag around the barriers", "Sound your horn and proceed"], correct: 0, explanation: "Never cross a level crossing when the barriers are down or the lights are flashing. Wait for them to stop.", category: "Alertness"},
-{question: "What does 'aquaplaning' mean?", options: ["Where tyres lose contact with a wet road surface", "Driving too close to the vehicle in front", "A type of reflective road stud", "Using water to cool the brakes"], correct: 0, explanation: "Aquaplaning (or hydroplaning) occurs when a layer of water builds between the wheels of the vehicle and the road surface, leading to a loss of traction.", category: "Weather Conditions"},
-{question: "What should you do if you have to make a journey in foggy conditions?", options: ["Allow more time for your journey", "Drive as close to the vehicle in front as possible", "Keep your full beam headlights on", "Avoid using your brakes"], correct: 0, explanation: "Fog reduces visibility, so slow down and allow significantly more time for your journey.", category: "Weather Conditions"},
-{question: "What is the purpose of the hard shoulder on a motorway?", options: ["For stopping in an emergency only", "For overtaking slower traffic", "For a short rest if you are tired", "For joining or leaving the motorway"], correct: 0, explanation: "The hard shoulder is reserved for genuine emergencies, breakdowns, or when directed by police or traffic officers.", category: "Motorway Driving"},
-{question: "You see a pedestrian with a dog wearing a yellow or burgundy coat. What does this indicate?", options: ["The pedestrian is deaf", "The pedestrian is blind", "The dog is a guide dog for a blind person", "The dog is a hearing dog for a deaf person"], correct: 3, explanation: "Dogs with yellow or burgundy coats are often hearing dogs, assisting people who are deaf or hard of hearing.", category: "Vulnerable Road Users"},
-{question: "What is the national speed limit for a car towing a small trailer on a dual carriageway?", options: ["60 mph", "70 mph", "50 mph", "55 mph"], correct: 0, explanation: "Cars towing caravans or trailers are restricted to 60 mph on dual carriageways and motorways.", category: "Speed Limits"},
-{question: "What does a traffic sign showing a picture of a tram in a red circle mean?", options: ["No trams", "Trams only", "Tram crossing ahead", "Route for trams"], correct: 0, explanation: "A symbol in a red circle is usually prohibitive. This sign means 'No trams'.", category: "Traffic Signs"},
-{question: "Before making a U-turn in the road, what should you normally do?", options: ["Check road markings and signs to ensure it's permitted and look for other traffic", "Signal and then make the turn quickly", "Select a high gear for speed", "Give an arm signal as well as using your indicators"], correct: 0, explanation: "Ensure U-turns are permitted and that it's safe to proceed by checking for traffic in all directions.", category: "Manoeuvres"},
-{question: "What does a circular traffic sign with a blue background and a white border showing a bicycle mean?", options: ["Route recommended for cycles", "No cycling", "Cycles must use this route", "Cycle parking"], correct: 2, explanation: "Blue circular signs usually indicate a mandatory instruction. This sign means 'Cycle route - cycles must use'.", category: "Traffic Signs"},
-{question: "What does the term 'blind spot' mean for a driver?", options: ["An area not covered by your mirrors", "An area blocked by your windscreen pillars", "An area you cannot see because of dazzling sunlight", "An area on the road hidden by a dip or bend"], correct: 0, explanation: "A blind spot is an area around your vehicle that cannot be directly observed by the driver while looking forward or through mirrors.", category: "Alertness"},
-{question: "What should you do if your vehicle breaks down in a tunnel?", options: ["Switch on hazard lights, call for help from an emergency phone", "Switch off all lights and wait for help", "Leave the engine running and stay in your vehicle", "Attempt to repair your vehicle immediately"], correct: 0, explanation: "In a tunnel breakdown, switch on hazards, try to stop near an emergency phone if possible, switch off engine, and use the phone to call for help. Do not stay in the vehicle if there's a fire risk.", category: "Accidents & Emergencies"},
-{question: "You are waiting at a level crossing. A train has passed but the lights keep flashing. What must you do?", options: ["Continue to wait", "Edge forward slowly", "Get out and check the line", "Drive across if you cannot see another train"], correct: 0, explanation: "You must wait until the lights stop flashing and any barriers rise completely, as another train may be approaching.", category: "Alertness"},
-{question: "What is the main cause of skidding?", options: ["The driver", "The vehicle", "The road surface", "The weather"], correct: 0, explanation: "Skids are most often caused by driver error – too harsh acceleration, braking, or steering for the conditions.", category: "Safety Margins"},
-{question: "When are you allowed to stop on a clearway?", options: ["Never", "Only if picking up or setting down passengers", "For up to 5 minutes", "In an emergency"], correct: 0, explanation: "Clearways are sections of road where stopping is prohibited, usually to ensure free flow of traffic. There are no exceptions unless in a genuine emergency or directed by police.", category: "Parking"},
-{question: "You are driving at night. A vehicle is overtaking you. When should you dip your headlights?", options: ["As soon as the overtaking vehicle passes you", "Only if the other driver flashes their lights", "Before the vehicle starts to pass you", "Never on a motorway"], correct: 0, explanation: "Dip your headlights as soon as the vehicle passes you to avoid dazzling the driver through their mirrors.", category: "Lighting"},
-{question: "What is the closest you can park to a junction?", options: ["10 metres (32 feet)", "5 metres (16 feet)", "15 metres (49 feet)", "No restriction if there are no lines"], correct: 0, explanation: "You must not park within 10 metres of a junction, unless in an authorised parking space, to maintain visibility.", category: "Parking"},
-{question: "What does a road sign with a brown background usually indicate?", options: ["Tourist attraction", "Primary route", "Industrial estate", "Hospital"], correct: 0, explanation: "Brown signs with white lettering and symbols indicate tourist attractions or facilities.", category: "Traffic Signs"},
-{question: "What does 'tailgating' mean?", options: ["Following another vehicle too closely", "Driving with your boot open", "A method of joining a motorway", "Reversing into a parking space"], correct: 0, explanation: "Tailgating is driving dangerously close to the vehicle in front.", category: "Safety Margins"},
-{question: "When should you use your vehicle's horn?", options: ["To alert others to your presence", "To show annoyance", "To greet other road users", "When stationary to let someone know you've arrived"], correct: 0, explanation: "The horn should only be used to warn other road users of your presence if necessary. It must not be used when stationary (unless another moving vehicle poses a danger) or in built-up areas between 11:30 pm and 7:00 am.", category: "Alertness"},
-{question: "What is the legal minimum insurance cover you must have to drive on public roads?", options: ["Third party only", "Fully comprehensive", "Third party, fire and theft", "Personal injury cover"], correct: 0, explanation: "The legal minimum is third-party insurance, which covers injury to others and damage to their property.", category: "Documents"},
-{question: "What does it mean if you see a pedestrian carrying a white stick with a red band?", options: ["They are deaf and blind", "They are blind", "They are physically disabled", "They are training a guide dog"], correct: 0, explanation: "A white stick with one or more red bands indicates the person is deafblind.", category: "Vulnerable Road Users"},
-{question: "On a three-lane motorway, which lane should you normally use if you are not overtaking?", options: ["The left-hand lane", "The middle lane", "The right-hand lane", "Any lane with space"], correct: 0, explanation: "Always keep to the left-hand lane on a motorway unless you are overtaking other vehicles.", category: "Motorway Driving"},
-{question: "What does a flashing amber beacon on top of a vehicle mean?", options: ["Slow-moving vehicle", "Emergency vehicle", "Doctor on call", "Police vehicle"], correct: 0, explanation: "A flashing amber beacon indicates a slow-moving or wide vehicle, such as a tractor or road maintenance vehicle.", category: "Alertness"},
-{question: "You are driving on a wet road. You have to stop your vehicle in an emergency. You should", options: ["Keep both hands on the steering wheel", "Apply the handbrake and footbrake together", "Select reverse gear", "Give an arm signal"], correct: 0, explanation: "In an emergency stop on a wet road, maintain firm control of the steering with both hands and use your footbrake progressively.", category: "Safety Margins"},
-{question: "What is the 'two-second rule' used for?", options: ["To maintain a safe following distance in good conditions", "To time your approach to a junction", "To check your tyre pressures", "To measure your reaction time"], correct: 0, explanation: "The two-second rule helps you keep a safe following distance from the vehicle in front in dry conditions. Double it in wet weather.", category: "Safety Margins"},
-{question: "You are involved in an accident. Somebody is unconscious. Your first priority should be to", options: ["Check their breathing and clear their airway", "Call the emergency services", "Take names and addresses of witnesses", "Warn other traffic"], correct: 0, explanation: "The immediate priority for an unconscious casualty is to ensure their airway is open and they are breathing (ABC - Airway, Breathing, Circulation).", category: "Accidents & Emergencies"},
-{question: "When may you drive over a footpath?", options: ["To gain lawful access to property", "If no pedestrians are present", "During restricted parking hours", "When the road is blocked"], correct: 0, explanation: "You may only drive over a footpath to gain lawful access to a property, or in an emergency if directed by police.", category: "Rules of the Road"},
-{question: "What does a 'Red Route' in London mean?", options: ["No stopping at any time, with some exceptions", "Route for emergency vehicles only", "Road with a high accident rate", "Main tourist route"], correct: 0, explanation: "Red Routes have strict no-stopping rules to keep traffic flowing, though some signs may indicate specific exceptions for loading or disabled badge holders.", category: "Parking"},
-{question: "If you are dazzled by the headlights of an oncoming vehicle, what should you do?", options: ["Slow down or stop if necessary", "Flash your headlights repeatedly", "Look directly at the lights to adjust your eyes", "Close your eyes briefly"], correct: 0, explanation: "If dazzled, slow down and if necessary, stop. Avoid looking directly at the lights; look to the left-hand edge of the road.", category: "Lighting"},
-{question: "What is the purpose of reflective studs along the left-hand edge of the motorway?", options: ["To mark the edge of the carriageway (red studs)", "To indicate slip roads (green studs)", "To show the central reservation (amber studs)", "To mark lane lines (white studs)"], correct: 0, explanation: "Red studs mark the left-hand edge of the carriageway next to the hard shoulder.", category: "Motorway Driving"},
-{question: "At a puffin crossing, which light follows the green light?", options: ["Steady amber", "Flashing amber", "Red and amber together", "Red alone"], correct: 0, explanation: "Like normal traffic lights, a steady amber light follows green, indicating you should stop unless it's unsafe to do so.", category: "Pedestrian Crossings"},
-{question: "What does a road sign showing a car on its roof next to water mean?", options: ["Quayside or river bank ahead", "Slippery road ahead", "Risk of flooding", "Car wash ahead"], correct: 0, explanation: "This warning sign indicates a quayside or river bank where there's a risk of driving into deep water.", category: "Traffic Signs"},
-{question: "What should you do when you are approaching road works on a motorway?", options: ["Obey all speed limits and signs", "Speed up to clear the area quickly", "Change lanes frequently to find the fastest route", "Ignore cones if the lane appears clear"], correct: 0, explanation: "Road works have mandatory speed limits for safety. Always obey these and be aware of narrowed lanes and operatives working.", category: "Motorway Driving"},
-{question: "When must you use dipped headlights during the day?", options: ["When visibility is seriously reduced", "When driving in built-up areas", "When it's raining lightly", "At all times to be seen"], correct: 0, explanation: "You MUST use headlights when visibility is seriously reduced (generally meaning you cannot see for more than 100 metres/328 feet).", category: "Lighting"},
-{question: "What is the main danger of driving too close to the vehicle in front?", options: ["Reduced view of the road ahead and inability to stop safely", "Increased fuel consumption", "Damage to your tyres", "The driver in front may become angry"], correct: 0, explanation: "Following too closely (tailgating) significantly reduces your view and your ability to stop safely if the vehicle in front slows or stops suddenly.", category: "Safety Margins"},
-{question: "You are at an incident. A casualty is not breathing. To start CPR, you should...", options: ["Give 30 chest compressions then 2 rescue breaths", "Give 2 rescue breaths then 30 chest compressions", "Give 15 chest compressions then 1 rescue breath", "Only give rescue breaths"], correct: 0, explanation: "Current CPR guidelines for adults usually start with 30 chest compressions followed by 2 rescue breaths.", category: "Accidents & Emergencies"},
-{question: "What type of vehicle is most affected by strong crosswinds?", options: ["High-sided vehicles", "Sports cars", "Motorcycles", "Estate cars"], correct: 0, explanation: "High-sided vehicles like lorries, buses, and cars towing caravans are more susceptible to being blown off course by strong crosswinds.", category: "Weather Conditions"},
-{question: "What does a circular sign with a thick white horizontal bar on a blue background mean?", options: ["Minimum speed limit", "Maximum speed limit", "End of minimum speed limit", "Compulsory direction for all vehicles"], correct: 0, explanation: "This sign indicates a minimum speed limit. The limit shown is the lowest speed you should normally travel at in good conditions.", category: "Traffic Signs"},
-{question: "Where would you find green reflective studs on a motorway?", options: ["Marking slip road entrances and exits", "Marking the left edge of the carriageway", "Marking the central reservation", "Marking lanes"], correct: 0, explanation: "Green studs are used to mark the edge of the main carriageway at slip road entrances and exits.", category: "Motorway Driving"},
-{question: "You are driving behind a long vehicle. It approaches a crossroads and signals right, but moves out to the left. What should you do?", options: ["Stay well back and give it room to turn", "Overtake on the right as it moves left", "Sound your horn and try to pass on the left", "Follow closely and be ready to brake"], correct: 0, explanation: "Long vehicles may need to swing out wide to the left to make a right turn. Stay well back and allow them space.", category: "Road Craft"},
-{question: "What is the purpose of a catalytic converter?", options: ["To reduce harmful exhaust emissions", "To improve fuel efficiency", "To silence the exhaust system", "To cool the engine"], correct: 0, explanation: "A catalytic converter is part of the exhaust system that converts toxic pollutants in exhaust gas to less toxic pollutants.", category: "Environmental"},
-{question: "When should you NOT overtake?", options: ["When approaching a junction or bend", "On a one-way street", "When the road ahead is clear", "On a dual carriageway"], correct: 0, explanation: "Never overtake if your view ahead is restricted, such as when approaching junctions, bends, or the brow of a hill.", category: "Overtaking"},
-{question: "What does an amber traffic light on its own mean?", options: ["Stop at the stop line, unless it's unsafe to do so", "Proceed with caution", "Prepare to go", "Give way to pedestrians"], correct: 0, explanation: "A steady amber light means stop at the stop line. You may only go on if you have already crossed the line or are so close that to stop might cause an accident.", category: "Traffic Signs"},
-{question: "If you are feeling tired while driving, what is the best thing to do?", options: ["Pull over at a safe and legal place to rest", "Increase your speed to reach your destination sooner", "Open a window for fresh air", "Drink a caffeinated drink"], correct: 0, explanation: "The only real cure for tiredness is proper rest. If tired, find a safe place to stop and take a break. A short nap (15-20 mins) can help.", category: "Alertness"},
-{question: "What is the meaning of a single continuous white line along the centre of the road?", options: ["You must not cross or straddle it, unless it is safe and necessary to enter an adjoining premises or side road, or to pass a stationary vehicle", "Overtaking prohibited at all times", "Lane line, can be crossed if safe", "Hazard warning line"], correct: 0, explanation: "A continuous white line in the centre of the road means you must not cross or straddle it unless for specific exceptions like entering property, a side road, or passing stationary vehicles, and only if safe.", category: "Road Markings"},
-{question: "Before reversing, what is the most important check you should make?", options: ["Check behind your vehicle, especially for children and obstructions", "Check your side mirrors only", "Sound your horn", "Engage your hazard warning lights"], correct: 0, explanation: "The area directly behind your vehicle is a major blind spot. Always check thoroughly for pedestrians (especially children) and any obstructions before reversing.", category: "Manoeuvres"},
-{question: "What does it mean if your vehicle's Anti-lock Braking System (ABS) warning light comes on and stays on?", options: ["The ABS may not be working correctly and needs checking by a mechanic", "The brakes will not work at all", "You need to pump the brake pedal when stopping", "The ABS is working correctly but at reduced efficiency"], correct: 0, explanation: "If the ABS warning light stays on, it indicates a fault with the ABS system. The normal brakes should still work, but without the anti-lock feature. Get it checked professionally.", category: "Vehicle Safety"},
-{question: "When are you allowed to use your hazard warning lights while moving?", options: ["To warn traffic behind of a hazard or obstruction ahead on a motorway or unrestricted dual carriageway", "When driving very slowly in fog", "When looking for a parking space", "If you are feeling unwell but need to continue driving"], correct: 0, explanation: "Hazard warning lights can be used while moving on motorways or unrestricted dual carriageways to warn following traffic of a hazard or obstruction ahead.", category: "Rules of the Road"},
-{question: "You are driving in heavy rain. Your steering suddenly feels light. What is the most likely cause?", options: ["Your tyres have lost grip with the road (aquaplaning)", "Your power steering has failed", "Your tyres are over-inflated", "You are driving too slowly"], correct: 0, explanation: "Light steering in heavy rain is a classic sign of aquaplaning, where the tyres are riding on the surface of the water instead of the road.", category: "Weather Conditions"},
-{question: "What is the primary purpose of the 'Engine Cut-Out Switch' on a motorcycle?", options: ["To stop the engine quickly in an emergency", "To prevent theft", "To save fuel when stationary", "To restart a stalled engine"], correct: 0, explanation: "The engine cut-out switch (usually red, on the handlebars) is designed to allow the rider to stop the engine quickly in an emergency without taking their hands off the handlebars.", category: "Motorcycle Safety (General Knowledge)"},
-{question: "You see a horse rider on the road. What should you do?", options: ["Pass slowly and give plenty of room", "Sound your horn as a warning", "Rev your engine to let them know you are there", "Pass as quickly as possible"], correct: 0, explanation: "Horses can be easily spooked. Slow down, give them plenty of room (at least a car's width), and be prepared to stop. Don't sound your horn or rev your engine.", category: "Vulnerable Road Users"},
-{question: "What does the 'SORN' (Statutory Off Road Notification) declaration mean?", options: ["The vehicle is not being used or kept on a public road and does not need to be taxed", "The vehicle is being exported permanently", "The vehicle has been stolen", "The vehicle is only used for agricultural purposes"], correct: 0, explanation: "SORN means you've declared to the DVLA that your vehicle is not being used or kept on a public road, so you don't have to pay vehicle tax.", category: "Documents"},
-{question: "When approaching a roundabout, you see a cyclist signalling to turn right. What should you expect?", options: ["The cyclist may stay in the left-hand lane or move to the centre of the lane", "The cyclist will move to the far right of the road", "The cyclist will stop before entering the roundabout", "The cyclist will always take the shortest path"], correct: 0, explanation: "Cyclists turning right at roundabouts may stay to the left or take a central position. Give them space and be aware they might take a different line than a car.", category: "Vulnerable Road Users"},
-{question: "What is 'coastal fog'?", options: ["Fog that forms over the sea and may drift inland", "Fog caused by industrial pollution near the coast", "A type of mist common in winter", "Fog that only occurs at high tide"], correct: 0, explanation: "Coastal fog, also known as sea fog, forms over the sea and can be blown inland by the wind, often reducing visibility suddenly.", category: "Weather Conditions"},
-{question: "You are towing a small trailer on a motorway. What is the national speed limit for your vehicle?", options: ["60 mph", "70 mph", "50 mph", "56 mph"], correct: 0, explanation: "Cars towing trailers or caravans are restricted to 60 mph on motorways and dual carriageways.", category: "Speed Limits"},
-{question: "What does a circular traffic sign with a red border and a picture of a car and a motorcycle inside, with a diagonal line through them, mean?", options: ["No motor vehicles", "Motor vehicles only", "Route for cars and motorcycles", "End of motor vehicle restriction"], correct: 0, explanation: "This sign indicates 'No motor vehicles except solo motorcycles'. If it was just a car and motorcycle without the line, it would be 'Route for motor vehicles'. The line signifies a prohibition.", category: "Traffic Signs"},
-{question: "What is the safest way to brake?", options: ["Early and lightly, then more firmly if necessary", "Late and hard", "Pump the brake pedal repeatedly", "Use the handbrake and footbrake together"], correct: 0, explanation: "Brake early and gently, progressively increasing pressure if needed. This gives following traffic more time to react and maintains better control.", category: "Safety Margins"},
-{question: "You are driving at dusk and the light is fading. You should switch on your headlights...", options: ["Even if street lights are on", "Only when it's fully dark", "Only if other cars have their lights on", "Only if you are on unlit roads"], correct: 0, explanation: "Use headlights at dusk and in poor daytime visibility so others can see you. Don't rely on streetlights alone or wait until it's completely dark.", category: "Lighting"},
-{question: "What is the main benefit of having a properly adjusted head restraint?", options: ["It helps to reduce neck and whiplash injuries in a collision", "It makes driving more comfortable", "It helps keep you awake on long journeys", "It improves your view in the mirrors"], correct: 0, explanation: "A correctly adjusted head restraint can significantly reduce the risk of neck and whiplash injuries if you are hit from behind.", category: "Vehicle Safety"},
-{question: "What does 'ESC' (Electronic Stability Control) system in a car do?", options: ["It helps prevent skidding by automatically braking individual wheels", "It controls the engine emissions", "It automatically changes gears", "It warns you if you are too close to another vehicle"], correct: 0, explanation: "ESC helps the driver maintain control of the vehicle during extreme steering manoeuvres by automatically applying brakes to individual wheels to prevent skids.", category: "Vehicle Safety"},
-{question: "Before starting a journey in winter, what should you clear from your vehicle's windows, lights, and number plates?", options: ["Ice and snow", "Only mud", "Only dirt", "Only condensation"], correct: 0, explanation: "You must clear all ice and snow from all windows, lights, and number plates before driving in winter for visibility and legality.", category: "Vehicle Safety"},
-{question: "What does a traffic sign showing a red triangle with a bicycle inside mean?", options: ["Cycle route ahead or cyclists crossing", "No cycling", "Cycles must use this route", "Cycle parking"], correct: 0, explanation: "A red triangular warning sign with a bicycle indicates that there may be cyclists ahead, or a cycle route crosses the road.", category: "Traffic Signs"},
-{question: "When parking at night, you should generally park...", options: ["In the direction of traffic flow", "Facing oncoming traffic", "On the pavement if the road is narrow", "Without any lights in a 40 mph zone"], correct: 0, explanation: "Park on the left-hand side of the road, in the direction of traffic flow. If the speed limit is over 30 mph, you MUST use parking lights.", category: "Parking"},
-{question: "What is the 'kick-down' feature in an automatic car used for?", options: ["To get quick acceleration", "To slow the vehicle down using engine braking", "To engage cruise control", "To switch to manual gear selection"], correct: 0, explanation: "Kick-down in an automatic transmission forces the gearbox to change down to a lower gear, providing a burst of acceleration, for example, when overtaking.", category: "Vehicle Controls"},
-{question: "You are on a motorway and see smoke or debris ahead. What should you do?", options: ["Slow down, be cautious, and use your hazard lights if necessary to warn others", "Speed up to get past it quickly", "Ignore it unless it's directly in your lane", "Stop on the hard shoulder immediately"], correct: 0, explanation: "Reduce speed, be alert for the cause of the smoke/debris, and if it's a significant hazard, use your hazard lights to warn following traffic.", category: "Motorway Driving"},
-{question: "What is the effect of an unbalanced wheel on a car?", options: ["The steering may vibrate", "The brakes may become inefficient", "Fuel consumption may increase", "The engine may misfire"], correct: 0, explanation: "Unbalanced wheels can cause vibrations in the steering wheel, especially at certain speeds, and can also lead to uneven tyre wear.", category: "Vehicle Condition"},
-{question: "When can you cross double white lines in the middle of the road where the line nearest to you is continuous?", options: ["To pass a stationary vehicle, or to pass a pedal cycle, horse or road maintenance vehicle travelling at 10 mph or less, if safe", "Never", "Only if the road ahead is clear for at least 2 miles", "If you are turning right"], correct: 0, explanation: "You must not cross or straddle a continuous white line nearest you unless it is safe and necessary to enter adjoining premises or a side road, pass a stationary vehicle, or overtake a pedal cycle, horse or road maintenance vehicle if it is travelling at 10 mph (16 km/h) or less.", category: "Road Markings"},
-{question: "What is the national speed limit for a car on a road with street lighting, unless signs show otherwise?", options: ["30 mph", "40 mph", "20 mph", "50 mph"], correct: 0, explanation: "The presence of street lighting usually indicates a built-up area where the speed limit is 30 mph, unless specific signs indicate a different limit.", category: "Speed Limits"},
-{question: "What is 'brake fade'?", options: ["Loss of braking effectiveness due to overheating", "When the brakes lock up too easily", "A spongy feeling in the brake pedal", "Uneven braking between wheels"], correct: 0, explanation: "Brake fade occurs when brakes overheat, typically due to prolonged or hard use (like on a long downhill stretch), making them less effective.", category: "Vehicle Condition"},
-{question: "You are driving towards a level crossing. What would be the first sign of an approaching train?", options: ["Steady amber light followed by flashing red lights", "Barriers coming down", "A loud horn from the train", "The ground vibrating"], correct: 0, explanation: "The sequence at an automatic level crossing with lights is a steady amber light, then twin flashing red lights, usually accompanied by an audible warning, before barriers lower (if present).", category: "Alertness"},
-{question: "When are you allowed to park on the zigzag lines outside a school?", options: ["Never during the times shown on a nearby sign", "Only for dropping off children", "If you stay in the car", "For up to 2 minutes"], correct: 0, explanation: "Zigzag lines outside schools indicate an area where you must not stop or park during the times shown on the accompanying signs, to ensure children's safety.", category: "Parking"},
-{question: "What does a rectangular sign with a green background and white border, showing a car and a caravan, indicate?", options: ["Route suitable for caravans", "No caravans allowed", "Caravan park ahead", "Overtaking by caravans prohibited"], correct: 0, explanation: "Green background rectangular signs often indicate primary routes. One showing a car and caravan could suggest a route that is suitable or recommended for vehicles towing caravans.", category: "Traffic Signs"},
-{question: "What is the most common cause of distraction for drivers?", options: ["Mobile phones and in-car technology", "Passengers talking", "Eating or drinking", "Looking at maps"], correct: 0, explanation: "While all can be distractions, mobile phones and other in-car electronic devices are a major and growing cause of driver distraction.", category: "Alertness"},
-{question: "You are driving at night on an unlit road. You see a pedestrian in dark clothing. What should you do?", options: ["Slow down and be prepared to stop; they may not have seen you", "Sound your horn continuously", "Flash your headlights", "Maintain speed and swerve around them"], correct: 0, explanation: "Pedestrians in dark clothing are very hard to see at night. Slow down, give them plenty of room, and be prepared to stop if necessary.", category: "Vulnerable Road Users"},
-{question: "What is the 'zone of separation' or 'hatching' (diagonal white lines) in the middle of a road for?", options: ["To separate traffic streams and should not be entered unless necessary and safe", "For overtaking slower vehicles", "As a temporary parking area", "To indicate the start of a dual carriageway"], correct: 0, explanation: "Hatched markings are there to separate traffic. You should not enter them unless it's seen to be necessary and can be done safely. If bordered by a solid white line, you must not enter except in an emergency.", category: "Road Markings"},
-{question: "What does it mean if you see a sign with a red circle, a white background, and a black car with a red diagonal line through it?", options: ["No motor vehicles, except motorcycles", "No overtaking", "Motor vehicles only", "End of vehicle restrictions"], correct: 0, explanation: "This sign typically means 'No motor vehicles'. A variation might show 'No motor vehicles except motorcycles'. The key is the red circle (prohibition) and the vehicle symbol.", category: "Traffic Signs"},
-{question: "How can you reduce the risk of your car being broken into at night?", options: ["Park in a well-lit area and remove valuables from sight", "Leave a window slightly open for ventilation", "Always park facing the direction of traffic", "Leave the radio on softly"], correct: 0, explanation: "Parking in well-lit, secure areas and ensuring no valuables are visible (ideally removed completely) reduces the temptation for thieves.", category: "Vehicle Security"},
-{question: "What is the main hazard when driving behind a vehicle with a projecting rear load?", options: ["The load may obscure the vehicle's lights or indicators, or it could fall", "The vehicle will be travelling very slowly", "The vehicle will take up more road space than usual", "The driver may not be able to see you clearly"], correct: 0, explanation: "A projecting load can obscure lights, fall off, or make the vehicle behave unpredictably. Keep well back.", category: "Road Craft"},
-{question: "When must you notify the DVLA (Driver and Vehicle Licensing Agency)?", options: ["If your health affects your ability to drive safely, or if you change your name or permanent address", "Only if you buy a new car", "Only if you get penalty points", "If you intend to drive abroad"], correct: 0, explanation: "You must tell DVLA if you change your name or address, or if you develop a medical condition that could affect your fitness to drive.", category: "Documents"},
-{question: "You are driving on a road with a 30 mph speed limit. You see a speed camera sign. What should you do?", options: ["Continue at a speed at or below 30 mph, ensuring it's safe for conditions", "Brake sharply just before the camera", "Speed up to get past it quickly", "Ignore it if you think the camera isn't working"], correct: 0, explanation: "Always drive within the speed limit and adjust for conditions. Speed camera signs are there to encourage compliance with the limit for safety reasons.", category: "Speed Limits"},
-{question: "What is the purpose of rumble strips or devices on the road surface?", options: ["To alert drivers to a hazard ahead, such as a junction or roundabout, or the edge of the carriageway", "To improve tyre grip in wet weather", "To mark parking bays", "To help cool down tyres on long journeys"], correct: 0, explanation: "Rumble strips cause noise and vibration to alert inattentive or drowsy drivers to the edge of the road or upcoming hazards.", category: "Road Markings"},
-{question: "What does a flashing green light at a pelican crossing mean?", options: ["You may proceed if it is safe for pedestrians to cross and they are clear of your path", "Stop and wait for the red light", "Give way to traffic from the right", "The lights are about to change to red"], correct: 0, explanation: "Unlike normal traffic lights, at a pelican crossing, a flashing green light for drivers means pedestrians have priority. You may proceed if the crossing is clear of pedestrians.", category: "Pedestrian Crossings"},
-{question: "What is the legal minimum blood alcohol limit for driving in England, Wales, and Northern Ireland?", options: ["80 milligrams of alcohol per 100 millilitres of blood", "50 milligrams of alcohol per 100 millilitres of blood", "35 milligrams of alcohol per 100 millilitres of blood", "22 milligrams of alcohol per 100 millilitres of blood"], correct: 0, explanation: "The limit in England, Wales, and Northern Ireland is 80mg alcohol / 100ml blood (or 35µg / 100ml breath). Scotland has a lower limit.", category: "Drink Driving"},
-{question: "You are turning right onto a dual carriageway from a side road. What should you ensure before emerging?", options: ["That the central reservation is wide enough for your vehicle if you have to wait", "That you can cross both carriageways in one go", "That there is no traffic coming from the left", "That you signal for at least 30 seconds"], correct: 0, explanation: "If the central reservation is not wide enough to protect your vehicle, you must wait until you can cross both carriageways safely in one manoeuvre.", category: "Dual Carriageways"},
-{question: "What is the 'Observation Link' sometimes referred to in advanced driving?", options: ["The way a driver scans the road ahead, to the sides, and in mirrors, linking observations to anticipate hazards", "A special type of mirror giving wider view", "A connection between vehicle speed and stopping distance", "A radio link for traffic information"], correct: 0, explanation: "The observation link describes the systematic way an advanced driver observes, anticipates, and plans, linking what they see far ahead, in the middle distance, near, and in mirrors.", category: "Road Craft"},
-{question: "When are you most likely to be affected by sun glare?", options: ["When the sun is low in the sky, typically early morning or late afternoon", "At midday when the sun is highest", "On cloudy days", "Only during summer months"], correct: 0, explanation: "Sun glare is most problematic when the sun is low on the horizon, shining directly into drivers' eyes.", category: "Weather Conditions"},
-{question: "What should you do if you have a tyre blowout while driving?", options: ["Grip the steering wheel firmly, allow the vehicle to slow down gradually, and pull over when safe", "Brake hard immediately and steer to the side of the road", "Accelerate slightly to regain control", "Immediately change to a lower gear"], correct: 0, explanation: "Hold the steering wheel firmly, ease off the accelerator, avoid harsh braking, and let the vehicle slow down before pulling over to a safe place.", category: "Accidents & Emergencies"},
-{question: "What does a circular blue sign with a white number '30' on it mean?", options: ["Minimum speed of 30 mph applies", "Maximum speed of 30 mph applies", "End of 30 mph zone", "Road number A30"], correct: 0, explanation: "A blue circular sign with a number indicates a minimum speed limit. You should not normally drive slower than this speed in good conditions.", category: "Traffic Signs"},
-{question: "Why should you check for motorcyclists when emerging from a junction?", options: ["They can be hidden by your vehicle's windscreen pillars or other obstructions", "They always travel faster than cars", "They are not allowed to use certain junctions", "They have right of way"], correct: 0, explanation: "Motorcyclists are smaller and can be easily obscured by blind spots like windscreen pillars, making them harder to see.", category: "Vulnerable Road Users"},
-{question: "What is the speed limit on a road where you see a sign 'Max Speed 20' in a red circle, near a school?", options: ["20 mph", "30 mph, but 20 mph is advised", "20 mph only when lights are flashing", "The national speed limit applies if no children are present"], correct: 0, explanation: "A '20' in a red circle is a mandatory maximum speed limit of 20 mph. These are often found near schools.", category: "Speed Limits"},
-{question: "You are waiting to turn right at a traffic light. The green light is showing. What should you do if oncoming traffic is preventing you from turning?", options: ["Move forward into the junction to wait, ensuring you don't block pedestrians or oncoming traffic turning left", "Wait behind the stop line until all oncoming traffic has passed", "Force your way through a small gap", "Turn left instead"], correct: 0, explanation: "If safe, move forward into the junction to wait for a safe gap, but do not obstruct other traffic or the pedestrian crossing.", category: "Junctions"},
-{question: "What does 'defensive driving' mean?", options: ["Anticipating potential hazards and taking action to avoid them", "Always driving below the speed limit", "Only driving during daylight hours", "Being ready to defend your position on the road"], correct: 0, explanation: "Defensive driving is about being aware of potential hazards, anticipating other road users' actions, and taking steps to prevent accidents before they happen.", category: "Road Craft"},
-{question: "What is the main danger of leaving too little space between your vehicle and a cyclist you are overtaking?", options: ["You could hit the cyclist if they swerve or wobble", "It may cause the cyclist to speed up", "It is illegal and carries 6 penalty points", "It will make your vehicle less stable"], correct: 0, explanation: "Cyclists may need to swerve to avoid potholes or other hazards. Not leaving enough room (at least 1.5 metres) puts them at serious risk.", category: "Vulnerable Road Users"},
-{question: "At a crossroads with no road markings or signs, who generally has priority?", options: ["No one has priority; proceed with extreme caution", "Traffic from the right", "Traffic from the left", "The vehicle that arrives first"], correct: 0, explanation: "At a completely unmarked crossroads, no one has priority. You must look, listen, and proceed only when it is safe from all directions.", category: "Junctions"},
-{question: "When should you use your rear fog lights?", options: ["When visibility is seriously reduced (less than 100 metres)", "In any kind of fog or mist", "When it's raining heavily", "Whenever you use your headlights"], correct: 0, explanation: "Only use rear fog lights when visibility is less than 100 metres. Switch them off as soon as visibility improves to avoid dazzling drivers behind you.", category: "Lighting"}
-
-
-
+{question: "A casualty isn’t breathing normally and needs CPR. At what rate should you press down and release on the centre of their chest?", options: ["100–120 compressions per minute", "60–80 compressions per minute", "40–60 compressions per minute", "120–140 compressions per minute"], correct: 0, explanation: "Effective CPR requires compressions at a rate of 100–120 per minute to maintain blood flow.", category: "Emergency"},
+{question: "A collision has just happened. An injured person is lying in a busy road. What’s the first thing you should do?", options: ["Warn other traffic", "Move them out of the road", "Give them a drink", "Make them sit up"], correct: 0, explanation: "You should warn other traffic to prevent further accidents before attending to the injured person.", category: "Emergency"},
+{question: "A cycle lane, marked by a solid white line, is in operation. When are you allowed to drive in it?", options: ["Never during its hours of operation", "Only during daylight hours", "When passing a parked car", "If no cyclists are present"], correct: 0, explanation: "A solid white line indicates the cycle lane is in operation and should not be used during its active times.", category: "Road Markings"},
+{question: "A driver’s behaviour has upset you. How can you get over this incident safely?", options: ["Stay calm and don’t retaliate", "Shout at the driver", "Follow them to confront them", "Try to overtake them quickly"], correct: 0, explanation: "Staying calm and avoiding confrontation ensures safety for you and others.", category: "Attitude"},
+{question: "A horse rider is in the left-hand lane approaching a roundabout. Where should you expect the rider to go?", options: ["In any direction", "Straight ahead only", "Left only", "Right only"], correct: 0, explanation: "Horse riders may stay left for safety regardless of the exit they plan to take.", category: "Other Road Users"},
+{question: "A police officer asks to see your documents. You don’t have them with you. How many days do you have to produce them at a police station?", options: ["7 days", "1 day", "14 days", "3 days"], correct: 0, explanation: "You legally have up to 7 days to produce documents at a police station.", category: "Legal"},
+{question: "A single carriageway road has this sign. What’s the maximum permitted speed for a car towing a trailer?", options: ["50 mph", "60 mph", "40 mph", "70 mph"], correct: 0, explanation: "On a single carriageway, the maximum speed for cars towing trailers is 50 mph.", category: "Speed Limits"},
+{question: "After a collision, someone is unconscious in their vehicle. When should you call the emergency services?", options: ["As soon as possible", "Only if they're not breathing", "After checking their pulse", "If other drivers haven't already"], correct: 0, explanation: "If someone is unconscious, call emergency services immediately as it may be life-threatening.", category: "Emergency"},
+{question: "An adult casualty isn’t breathing. To maintain circulation, CPR should be given. What’s the correct technique?", options: ["30 chest compressions followed by 2 rescue breaths", "15 chest compressions and 5 rescue breaths", "5 rescue breaths only", "10 compressions and 2 breaths"], correct: 0, explanation: "The standard CPR method for adults is 30 compressions followed by 2 rescue breaths.", category: "Emergency"},
+{question: "An injured motorcyclist is lying unconscious in the road. What should you do first?", options: ["Check their breathing", "Remove their helmet", "Give them water", "Drag them to the side of the road"], correct: 0, explanation: "Your priority should be to check if they are breathing before taking further action.", category: "Emergency"}
 
 ]
 
 
-    // Function to randomize answer options for each question
-    const randomizeAnswerOptions = (question) => {
-        const originalCorrectAnswer = question.options[question.correct];
-        const shuffledOptions = [...question.options];
+        // Function to randomize answer options for each question
+        const randomizeAnswerOptions = (question) => {
+            const originalCorrectAnswer = question.options[question.correct];
+            const shuffledOptions = [...question.options];
 
-        // Fisher-Yates shuffle algorithm
-        for (let i = shuffledOptions.length - 1; i > 0; i--) {
-            const j = Math.floor(Math.random() * (i + 1));
-            [shuffledOptions[i], shuffledOptions[j]] = [shuffledOptions[j], shuffledOptions[i]];
-        }
-
-        // Find the new index of the correct answer
-        const newCorrectIndex = shuffledOptions.findIndex(option => option === originalCorrectAnswer);
-
-        return {
-            ...question,
-            options: shuffledOptions,
-            correct: newCorrectIndex
-        };
-    };
-
-    const DrivingTheoryTest = () => {
-        const [questions, setQuestions] = useState([]);
-        const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
-        const [selectedAnswers, setSelectedAnswers] = useState({});
-        const [showResults, setShowResults] = useState(false);
-        const [testStarted, setTestStarted] = useState(false);
-        const [timeLeft, setTimeLeft] = useState(57 * 60); // 57 minutes in seconds
-        const [selectedCategories, setSelectedCategories] = useState([]);
-        const [showCategoryFilter, setShowCategoryFilter] = useState(false);
-
-        // Get unique categories
-        const categories = [...new Set(ALL_QUESTIONS.map(q => q.category))];
-
-        // Timer effect
-        useEffect(() => {
-            if (testStarted && !showResults && timeLeft > 0) {
-                const timer = setInterval(() => {
-                    setTimeLeft(prev => {
-                        if (prev <= 1) {
-                            handleSubmitTest();
-                            return 0;
-                        }
-                        return prev - 1;
-                    });
-                }, 1000);
-                return () => clearInterval(timer);
-            }
-        }, [testStarted, showResults, timeLeft]);
-
-        const formatTime = (seconds) => {
-            const mins = Math.floor(seconds / 60);
-            const secs = seconds % 60;
-            return `${mins}:${secs.toString().padStart(2, '0')}`;
-        };
-
-        const shuffleQuestions = (questionsArray) => {
-            // First randomize the answer options for each question
-            const randomizedQuestions = questionsArray.map(randomizeAnswerOptions);
-
-            // Then shuffle the questions themselves
-            const shuffled = [...randomizedQuestions];
-            for (let i = shuffled.length - 1; i > 0; i--) {
+            // Fisher-Yates shuffle algorithm
+            for (let i = shuffledOptions.length - 1; i > 0; i--) {
                 const j = Math.floor(Math.random() * (i + 1));
-                [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
-            }
-            return shuffled.slice(0, 50); // Take 50 questions for full test
-        };
-
-        const getFilteredQuestions = () => {
-            if (selectedCategories.length === 0) {
-                return ALL_QUESTIONS;
-            }
-            return ALL_QUESTIONS.filter(q => selectedCategories.includes(q.category));
-        };
-
-        const startTest = () => {
-            const availableQuestions = getFilteredQuestions();
-            if (availableQuestions.length === 0) {
-                alert("Please select at least one category");
-                return;
+                [shuffledOptions[i], shuffledOptions[j]] = [shuffledOptions[j], shuffledOptions[i]];
             }
 
-            const shuffledQuestions = shuffleQuestions(availableQuestions);
-            setQuestions(shuffledQuestions);
-            setTestStarted(true);
-            setCurrentQuestionIndex(0);
-            setSelectedAnswers({});
-            setShowResults(false);
-            setTimeLeft(57 * 60);
+            // Find the new index of the correct answer
+            const newCorrectIndex = shuffledOptions.findIndex(option => option === originalCorrectAnswer);
+
+            return {
+                ...question,
+                options: shuffledOptions,
+                correct: newCorrectIndex
+            };
         };
 
-        const handleCategoryToggle = (category) => {
-            setSelectedCategories(prev =>
-                prev.includes(category)
-                    ? prev.filter(c => c !== category)
-                    : [...prev, category]
-            );
-        };
+        const DrivingTheoryTest = () => {
+            const [questions, setQuestions] = useState([]);
+            const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
+            const [selectedAnswers, setSelectedAnswers] = useState({});
+            const [showResults, setShowResults] = useState(false);
+            const [testStarted, setTestStarted] = useState(false);
+            const [timeLeft, setTimeLeft] = useState(57 * 60); // 57 minutes in seconds
+            const [selectedCategories, setSelectedCategories] = useState([]);
+            const [showCategoryFilter, setShowCategoryFilter] = useState(false);
 
-        const selectAllCategories = () => {
-            setSelectedCategories(categories);
-        };
+            // Get unique categories
+            const categories = [...new Set(ALL_QUESTIONS.map(q => q.category))];
 
-        const clearAllCategories = () => {
-            setSelectedCategories([]);
-        };
-
-        const handleAnswerSelect = (answerIndex) => {
-            setSelectedAnswers(prev => ({
-                ...prev,
-                [currentQuestionIndex]: answerIndex
-            }));
-        };
-
-        const handleNextQuestion = () => {
-            if (currentQuestionIndex < questions.length - 1) {
-                setCurrentQuestionIndex(prev => prev + 1);
-            }
-        };
-
-        const handlePreviousQuestion = () => {
-            if (currentQuestionIndex > 0) {
-                setCurrentQuestionIndex(prev => prev - 1);
-            }
-        };
-
-        const handleSubmitTest = () => {
-            setShowResults(true);
-            setTestStarted(false);
-        };
-
-        const calculateScore = () => {
-            let correct = 0;
-            questions.forEach((question, index) => {
-                if (selectedAnswers[index] === question.correct) {
-                    correct++;
+            // Timer effect
+            useEffect(() => {
+                if (testStarted && !showResults && timeLeft > 0) {
+                    const timer = setInterval(() => {
+                        setTimeLeft(prev => {
+                            if (prev <= 1) {
+                                handleSubmitTest();
+                                return 0;
+                            }
+                            return prev - 1;
+                        });
+                    }, 1000);
+                    return () => clearInterval(timer);
                 }
-            });
-            return correct;
-        };
+            }, [testStarted, showResults, timeLeft]);
 
-        const resetTest = () => {
-            setTestStarted(false);
-            setShowResults(false);
-            setCurrentQuestionIndex(0);
-            setSelectedAnswers({});
-            setTimeLeft(57 * 60);
-        };
+            const formatTime = (seconds) => {
+                const mins = Math.floor(seconds / 60);
+                const secs = seconds % 60;
+                return `${mins}:${secs.toString().padStart(2, '0')}`;
+            };
 
-        const getCategoryStats = () => {
-            const stats = {};
-            questions.forEach((question, index) => {
-                const category = question.category;
-                if (!stats[category]) {
-                    stats[category] = { total: 0, correct: 0 };
+            const shuffleQuestions = (questionsArray) => {
+                // First randomize the answer options for each question
+                const randomizedQuestions = questionsArray.map(randomizeAnswerOptions);
+
+                // Then shuffle the questions themselves
+                const shuffled = [...randomizedQuestions];
+                for (let i = shuffled.length - 1; i > 0; i--) {
+                    const j = Math.floor(Math.random() * (i + 1));
+                    [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
                 }
-                stats[category].total++;
-                if (selectedAnswers[index] === question.correct) {
-                    stats[category].correct++;
+                return shuffled.slice(0, 50); // Take 50 questions for full test
+            };
+
+            const getFilteredQuestions = () => {
+                if (selectedCategories.length === 0) {
+                    return ALL_QUESTIONS;
                 }
-            });
-            return stats;
-        };
+                return ALL_QUESTIONS.filter(q => selectedCategories.includes(q.category));
+            };
 
-        if (!testStarted && !showResults) {
-            return (
-                <div className="max-w-4xl mx-auto p-6 bg-white min-h-screen">
-                    <div className="text-center mb-8">
+            const startTest = () => {
+                const availableQuestions = getFilteredQuestions();
+                if (availableQuestions.length === 0) {
+                    alert("Please select at least one category");
+                    return;
+                }
+
+                const shuffledQuestions = shuffleQuestions(availableQuestions);
+                setQuestions(shuffledQuestions);
+                setTestStarted(true);
+                setCurrentQuestionIndex(0);
+                setSelectedAnswers({});
+                setShowResults(false);
+                setTimeLeft(57 * 60);
+            };
+
+            const handleCategoryToggle = (category) => {
+                setSelectedCategories(prev =>
+                    prev.includes(category)
+                        ? prev.filter(c => c !== category)
+                        : [...prev, category]
+                );
+            };
+
+            const selectAllCategories = () => {
+                setSelectedCategories(categories);
+            };
+
+            const clearAllCategories = () => {
+                setSelectedCategories([]);
+            };
+
+            const handleAnswerSelect = (answerIndex) => {
+                setSelectedAnswers(prev => ({
+                    ...prev,
+                    [currentQuestionIndex]: answerIndex
+                }));
+            };
+
+            const handleNextQuestion = () => {
+                if (currentQuestionIndex < questions.length - 1) {
+                    setCurrentQuestionIndex(prev => prev + 1);
+                }
+            };
+
+            const handlePreviousQuestion = () => {
+                if (currentQuestionIndex > 0) {
+                    setCurrentQuestionIndex(prev => prev - 1);
+                }
+            };
+
+            const handleSubmitTest = () => {
+                setShowResults(true);
+                setTestStarted(false);
+            };
+
+            const calculateScore = () => {
+                let correct = 0;
+                questions.forEach((question, index) => {
+                    if (selectedAnswers[index] === question.correct) {
+                        correct++;
+                    }
+                });
+                return correct;
+            };
+
+            const resetTest = () => {
+                setTestStarted(false);
+                setShowResults(false);
+                setCurrentQuestionIndex(0);
+                setSelectedAnswers({});
+                setTimeLeft(57 * 60);
+            };
+
+            const getCategoryStats = () => {
+                const stats = {};
+                questions.forEach((question, index) => {
+                    const category = question.category;
+                    if (!stats[category]) {
+                        stats[category] = { total: 0, correct: 0 };
+                    }
+                    stats[category].total++;
+                    if (selectedAnswers[index] === question.correct) {
+                        stats[category].correct++;
+                    }
+                });
+                return stats;
+            };
+
+            if (!testStarted && !showResults) {
+                return (
+                    <div className="max-w-4xl mx-auto p-6 bg-white min-h-screen">
+                        <div className="text-center mb-8">
 
 
-                        <h1 className="text-3xl font-bold text-blue-900 mb-2">UK Driving Theory Test</h1>
-                        <p className="text-gray-600">Complete DVSA Question Database - {ALL_QUESTIONS.length} Questions</p>
-                        <p className="text-sm text-gray-500 mt-1">Comprehensive practice test with randomized answer options</p>
-                    </div>
-
-                    <div className="bg-green-50 border border-green-200 rounded-lg p-6 mb-6">
-                        <h2 className="text-xl font-semibold text-green-900 mb-4">✨ Randomized Answer Options</h2>
-                        <p className="text-gray-700">
-                            Each time you start a test, <strong>all answer options are randomly shuffled</strong> so the correct answer
-                            is distributed evenly across A, B, C, and D options. This makes the test more realistic and prevents
-                            memorizing answer patterns.
-                        </p>
-                    </div>
-
-                    <div className="bg-blue-50 border border-blue-200 rounded-lg p-6 mb-6">
-                        <h2 className="text-xl font-semibold text-blue-900 mb-4 flex items-center">
-                            <BookOpen className="mr-2" />
-                            Question Categories ({categories.length} categories available)
-                        </h2>
-                        <div className="flex gap-2 mb-4">
-                            <button
-                                onClick={() => setShowCategoryFilter(!showCategoryFilter)}
-                                className="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors"
-                            >
-                                {showCategoryFilter ? 'Hide' : 'Show'} Category Filter
-                            </button>
-                            {showCategoryFilter && (
-                                <>
-                                    <button
-                                        onClick={selectAllCategories}
-                                        className="px-4 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700 transition-colors"
-                                    >
-                                        Select All
-                                    </button>
-                                    <button
-                                        onClick={clearAllCategories}
-                                        className="px-4 py-2 bg-red-600 text-white rounded-lg hover:bg-red-700 transition-colors"
-                                    >
-                                        Clear All
-                                    </button>
-                                </>
-                            )}
+                            <h1 className="text-3xl font-bold text-blue-900 mb-2">UK Driving Theory Test</h1>
+                            <p className="text-gray-600">Complete DVSA Question Database - {ALL_QUESTIONS.length} Questions</p>
+                            <p className="text-sm text-gray-500 mt-1">Comprehensive practice test with randomized answer options</p>
                         </div>
 
-                        {showCategoryFilter && (
-                            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3 mb-4">
-                                {categories.map(category => {
-                                    const categoryCount = ALL_QUESTIONS.filter(q => q.category === category).length;
-                                    return (
-                                        <label key={category} className="flex items-center space-x-2 cursor-pointer p-2 hover:bg-blue-100 rounded">
-                                            <input
-                                                type="checkbox"
-                                                checked={selectedCategories.includes(category)}
-                                                onChange={() => handleCategoryToggle(category)}
-                                                className="w-4 h-4 text-blue-600 rounded"
-                                            />
-                                            <span className="text-sm text-gray-700 flex-1">
-                                                {category} ({categoryCount})
-                                            </span>
-                                        </label>
-                                    );
-                                })}
+                        <div className="bg-green-50 border border-green-200 rounded-lg p-6 mb-6">
+                            <h2 className="text-xl font-semibold text-green-900 mb-4">✨ Randomized Answer Options</h2>
+                            <p className="text-gray-700">
+                                Each time you start a test, <strong>all answer options are randomly shuffled</strong> so the correct answer
+                                is distributed evenly across A, B, C, and D options. This makes the test more realistic and prevents
+                                memorizing answer patterns.
+                            </p>
+                        </div>
+
+                        <div className="bg-blue-50 border border-blue-200 rounded-lg p-6 mb-6">
+                            <h2 className="text-xl font-semibold text-blue-900 mb-4 flex items-center">
+                                <BookOpen className="mr-2" />
+                                Question Categories ({categories.length} categories available)
+                            </h2>
+                            <div className="flex gap-2 mb-4">
+                                <button
+                                    onClick={() => setShowCategoryFilter(!showCategoryFilter)}
+                                    className="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors"
+                                >
+                                    {showCategoryFilter ? 'Hide' : 'Show'} Category Filter
+                                </button>
+                                {showCategoryFilter && (
+                                    <>
+                                        <button
+                                            onClick={selectAllCategories}
+                                            className="px-4 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700 transition-colors"
+                                        >
+                                            Select All
+                                        </button>
+                                        <button
+                                            onClick={clearAllCategories}
+                                            className="px-4 py-2 bg-red-600 text-white rounded-lg hover:bg-red-700 transition-colors"
+                                        >
+                                            Clear All
+                                        </button>
+                                    </>
+                                )}
+                            </div>
+
+                            {showCategoryFilter && (
+                                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3 mb-4">
+                                    {categories.map(category => {
+                                        const categoryCount = ALL_QUESTIONS.filter(q => q.category === category).length;
+                                        return (
+                                            <label key={category} className="flex items-center space-x-2 cursor-pointer p-2 hover:bg-blue-100 rounded">
+                                                <input
+                                                    type="checkbox"
+                                                    checked={selectedCategories.includes(category)}
+                                                    onChange={() => handleCategoryToggle(category)}
+                                                    className="w-4 h-4 text-blue-600 rounded"
+                                                />
+                                                <span className="text-sm text-gray-700 flex-1">
+                                                    {category} ({categoryCount})
+                                                </span>
+                                            </label>
+                                        );
+                                    })}
+                                </div>
+                            )}
+
+                            <div className="text-sm text-gray-600 bg-blue-100 p-3 rounded">
+                                <strong>Available questions:</strong> {getFilteredQuestions().length}
+                                {selectedCategories.length > 0 && (
+                                    <span className="ml-2">
+                                        (from {selectedCategories.length} selected categories)
+                                    </span>
+                                )}
+                            </div>
+                        </div>
+
+                        <div className="bg-gray-50 border border-gray-200 rounded-lg p-6 mb-6">
+                            <h2 className="text-xl font-semibold text-gray-900 mb-4">Test Information</h2>
+                            <div className="grid md:grid-cols-3 gap-4">
+                                <div className="flex items-center">
+                                    <Target className="text-blue-600 mr-2" />
+                                    <div>
+                                        <p className="font-medium">Questions</p>
+                                        <p className="text-sm text-gray-600">50 questions per test</p>
+                                    </div>
+                                </div>
+                                <div className="flex items-center">
+                                    <Clock className="text-blue-600 mr-2" />
+                                    <div>
+                                        <p className="font-medium">Time Limit</p>
+                                        <p className="text-sm text-gray-600">57 minutes</p>
+                                    </div>
+                                </div>
+                                <div className="flex items-center">
+                                    <CheckCircle className="text-green-600 mr-2" />
+                                    <div>
+                                        <p className="font-medium">Pass Mark</p>
+                                        <p className="text-sm text-gray-600">43 out of 50 (86%)</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div className="text-center">
+                        {/* New Back Button */}
+                            <button
+                                onClick={() => window.history.back()}
+                                className="bg-gray-500 hover:bg-gray-600 text-white font-bold py-3 px-6 rounded-lg text-lg transition-colors mr-4"
+                            >
+                                Back
+                            </button>
+                            <button
+                                onClick={startTest}
+                                disabled={getFilteredQuestions().length === 0}
+                                className="bg-blue-600 hover:bg-blue-700 disabled:bg-gray-400 disabled:cursor-not-allowed text-white font-bold py-4 px-8 rounded-lg text-lg transition-colors"
+                            >
+                                Start Theory Test
+                            </button>
+                            <p className="text-sm text-gray-600 mt-2">
+                                {selectedCategories.length === 0
+                                    ? `Using all ${ALL_QUESTIONS.length} questions from all categories`
+                                    : `Using ${getFilteredQuestions().length} questions from ${selectedCategories.length} selected categories`
+                                }
+                            </p><p><br></br></p><p><br></br></p>
+                        </div>
+                    </div>
+                );
+            }
+
+            if (showResults) {
+                const score = calculateScore();
+                const passed = score >= 43;
+                const categoryStats = getCategoryStats();
+
+                return (
+                    <div className="max-w-4xl mx-auto p-6 bg-white min-h-screen">
+                        <div className="text-center mb-8">
+                            <h1 className="text-3xl font-bold text-blue-900 mb-4">Test Results</h1>
+
+                            <div className={`inline-flex items-center justify-center w-32 h-32 rounded-full mb-6 ${
+                                passed ? 'bg-green-100 text-green-600' : 'bg-red-100 text-red-600'
+                            }`}>
+                                {passed ? <CheckCircle size={48} /> : <XCircle size={48} />}
+                            </div>
+
+                            <h2 className={`text-4xl font-bold mb-2 ${passed ? 'text-green-600' : 'text-red-600'}`}>
+                                {passed ? 'PASS' : 'FAIL'}
+                            </h2>
+
+                            <p className="text-2xl text-gray-700 mb-6">
+                                {score} out of {questions.length} correct ({Math.round((score / questions.length) * 100)}%)
+                            </p>
+
+                            <div className="bg-gray-50 rounded-lg p-4 mb-6">
+                                <p className="text-gray-600">
+                                    {passed ?
+                                        'Congratulations! You passed the theory test. You\'re ready for the real exam!' :
+                                        `You need 43 correct answers to pass. You scored ${score} - keep practicing!`
+                                    }
+                                </p>
+                            </div>
+                        </div>
+
+                        {/* Category Performance */}
+                        {Object.keys(categoryStats).length > 1 && (
+                            <div className="mb-8">
+                                <h3 className="text-xl font-semibold mb-4">Performance by Category</h3>
+                                <div className="grid md:grid-cols-2 gap-4">
+                                    {Object.entries(categoryStats).map(([category, stats]) => (
+                                        <div key={category} className="bg-gray-50 rounded-lg p-4">
+                                            <h4 className="font-medium text-gray-900 mb-2">{category}</h4>
+                                            <div className="flex items-center justify-between">
+                                                <span className="text-sm text-gray-600">
+                                                    {stats.correct} / {stats.total} correct
+                                                </span>
+                                                <span className={`text-sm font-medium ${
+                                                    stats.correct / stats.total >= 0.8 ? 'text-green-600' :
+                                                    stats.correct / stats.total >= 0.6 ? 'text-yellow-600' : 'text-red-600'
+                                                }`}>
+                                                    {Math.round((stats.correct / stats.total) * 100)}%
+                                                </span>
+                                            </div>
+                                            <div className="w-full bg-gray-200 rounded-full h-2 mt-2">
+                                                <div
+                                                    className={`h-2 rounded-full ${
+                                                        stats.correct / stats.total >= 0.8 ? 'bg-green-500' :
+                                                        stats.correct / stats.total >= 0.6 ? 'bg-yellow-500' : 'bg-red-500'
+                                                    }`}
+                                                    style={{ width: `${(stats.correct / stats.total) * 100}%` }}
+                                                ></div>
+                                            </div>
+                                        </div>
+                                    ))}
+                                </div>
                             </div>
                         )}
 
-                        <div className="text-sm text-gray-600 bg-blue-100 p-3 rounded">
-                            <strong>Available questions:</strong> {getFilteredQuestions().length}
-                            {selectedCategories.length > 0 && (
-                                <span className="ml-2">
-                                    (from {selectedCategories.length} selected categories)
-                                </span>
-                            )}
+                        {/* Review Questions */}
+                        <div className="mb-8">
+                            <h3 className="text-xl font-semibold mb-4">Review Your Answers</h3>
+                            <div className="space-y-4">
+                                {questions.map((question, index) => {
+                                    const userAnswer = selectedAnswers[index];
+                                    const isCorrect = userAnswer === question.correct;
+
+                                    return (
+                                        <div key={index} className={`border rounded-lg p-4 ${
+                                            isCorrect ? 'border-green-200 bg-green-50' : 'border-red-200 bg-red-50'
+                                        }`}>
+                                            <div className="flex items-start">
+                                                <div className={`mr-3 mt-1 ${isCorrect ? 'text-green-600' : 'text-red-600'}`}>
+                                                    {isCorrect ? <CheckCircle size={20} /> : <XCircle size={20} />}
+                                                </div>
+                                                <div className="flex-1">
+                                                    <div className="flex items-center justify-between mb-2">
+                                                        <p className="font-medium">Q{index + 1}: {question.question}</p>
+                                                        <span className="ml-2 px-2 py-1 text-xs bg-blue-100 text-blue-800 rounded">
+                                                            {question.category}
+                                                        </span>
+                                                    </div>
+                                                    <div className="grid grid-cols-1 gap-2 mb-3">
+                                                        {question.options.map((option, optIndex) => (
+                                                            <div key={optIndex} className={`p-2 rounded text-sm ${
+                                                                optIndex === question.correct ? 'bg-green-100 text-green-800 font-medium' :
+                                                                optIndex === userAnswer && userAnswer !== question.correct ? 'bg-red-100 text-red-800' :
+                                                                'bg-gray-100 text-gray-600'
+                                                            }`}>
+                                                                {String.fromCharCode(65 + optIndex)}) {option}
+                                                                {optIndex === question.correct && <span className="ml-2 text-green-600">✓ Correct</span>}
+                                                                {optIndex === userAnswer && userAnswer !== question.correct && <span className="ml-2 text-red-600">✗ Your answer</span>}
+                                                            </div>
+                                                        ))}
+                                                    </div>
+                                                    {question.explanation && (
+                                                        <div className="mt-3 p-3 bg-blue-50 border border-blue-200 rounded text-sm text-blue-800">
+                                                            <strong>Explanation:</strong> {question.explanation}
+                                                        </div>
+                                                    )}
+                                                </div>
+                                            </div>
+                                        </div>
+                                    );
+                                })}
+                            </div>
+                        </div>
+
+                        <div className="text-center">
+                            <button
+                                onClick={resetTest}
+                                className="bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-6 rounded-lg transition-colors inline-flex items-center"
+                            >
+                                <RotateCcw className="mr-2" size={20} />
+                                Take Another Test
+                            </button>
                         </div>
                     </div>
+                );
+            }
 
-                    <div className="bg-gray-50 border border-gray-200 rounded-lg p-6 mb-6">
-                        <h2 className="text-xl font-semibold text-gray-900 mb-4">Test Information</h2>
-                        <div className="grid md:grid-cols-3 gap-4">
-                            <div className="flex items-center">
-                                <Target className="text-blue-600 mr-2" />
-                                <div>
-                                    <p className="font-medium">Questions</p>
-                                    <p className="text-sm text-gray-600">50 questions per test</p>
-                                </div>
-                            </div>
-                            <div className="flex items-center">
-                                <Clock className="text-blue-600 mr-2" />
-                                <div>
-                                    <p className="font-medium">Time Limit</p>
-                                    <p className="text-sm text-gray-600">57 minutes</p>
-                                </div>
-                            </div>
-                            <div className="flex items-center">
-                                <CheckCircle className="text-green-600 mr-2" />
-                                <div>
-                                    <p className="font-medium">Pass Mark</p>
-                                    <p className="text-sm text-gray-600">43 out of 50 (86%)</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div className="text-center">
-                    {/* New Back Button */}
-                        <button
-                            onClick={() => window.history.back()}
-                            className="bg-gray-500 hover:bg-gray-600 text-white font-bold py-3 px-6 rounded-lg text-lg transition-colors mr-4"
-                        >
-                            Back
-                        </button>
-                        <button
-                            onClick={startTest}
-                            disabled={getFilteredQuestions().length === 0}
-                            className="bg-blue-600 hover:bg-blue-700 disabled:bg-gray-400 disabled:cursor-not-allowed text-white font-bold py-4 px-8 rounded-lg text-lg transition-colors"
-                        >
-                            Start Theory Test
-                        </button>
-                        <p className="text-sm text-gray-600 mt-2">
-                            {selectedCategories.length === 0
-                                ? `Using all ${ALL_QUESTIONS.length} questions from all categories`
-                                : `Using ${getFilteredQuestions().length} questions from ${selectedCategories.length} selected categories`
-                            }
-                        </p><p><br></br></p><p><br></br></p>
-                    </div>
-                </div>
-            );
-        }
-
-        if (showResults) {
-            const score = calculateScore();
-            const passed = score >= 43;
-            const categoryStats = getCategoryStats();
+            const currentQuestion = questions[currentQuestionIndex];
+            const progress = ((currentQuestionIndex + 1) / questions.length) * 100;
 
             return (
                 <div className="max-w-4xl mx-auto p-6 bg-white min-h-screen">
-                    <div className="text-center mb-8">
-                        <h1 className="text-3xl font-bold text-blue-900 mb-4">Test Results</h1>
-
-                        <div className={`inline-flex items-center justify-center w-32 h-32 rounded-full mb-6 ${
-                            passed ? 'bg-green-100 text-green-600' : 'bg-red-100 text-red-600'
-                        }`}>
-                            {passed ? <CheckCircle size={48} /> : <XCircle size={48} />}
-                        </div>
-
-                        <h2 className={`text-4xl font-bold mb-2 ${passed ? 'text-green-600' : 'text-red-600'}`}>
-{selectedQuestions.length >= 50 ? (passed ? 'PASS' : 'FAIL') : ''}
-                        </h2>
-
-                        <p className="text-2xl text-gray-700 mb-6">
-                            {score} out of {questions.length} correct ({Math.round((score / questions.length) * 100)}%)
-                        </p>
-
-                        <div className="bg-gray-50 rounded-lg p-4 mb-6">
-                            <p className="text-gray-600">
-                                {passed ?
-                                    'Congratulations! You passed the theory test. You\'re ready for the real exam!' :
-                                    `You need 43 correct answers to pass. You scored ${score} - keep practicing!`
-                                }
-                            </p>
-                        </div>
-                    </div>
-
-                    {/* Category Performance */}
-                    {Object.keys(categoryStats).length > 1 && (
-                        <div className="mb-8">
-                            <h3 className="text-xl font-semibold mb-4">Performance by Category</h3>
-                            <div className="grid md:grid-cols-2 gap-4">
-                                {Object.entries(categoryStats).map(([category, stats]) => (
-                                    <div key={category} className="bg-gray-50 rounded-lg p-4">
-                                        <h4 className="font-medium text-gray-900 mb-2">{category}</h4>
-                                        <div className="flex items-center justify-between">
-                                            <span className="text-sm text-gray-600">
-                                                {stats.correct} / {stats.total} correct
-                                            </span>
-                                            <span className={`text-sm font-medium ${
-                                                stats.correct / stats.total >= 0.8 ? 'text-green-600' :
-                                                stats.correct / stats.total >= 0.6 ? 'text-yellow-600' : 'text-red-600'
-                                            }`}>
-                                                {Math.round((stats.correct / stats.total) * 100)}%
-                                            </span>
-                                        </div>
-                                        <div className="w-full bg-gray-200 rounded-full h-2 mt-2">
-                                            <div
-                                                className={`h-2 rounded-full ${
-                                                    stats.correct / stats.total >= 0.8 ? 'bg-green-500' :
-                                                    stats.correct / stats.total >= 0.6 ? 'bg-yellow-500' : 'bg-red-500'
-                                                }`}
-                                                style={{ width: `${(stats.correct / stats.total) * 100}%` }}
-                                            ></div>
-                                        </div>
-                                    </div>
-                                ))}
+                    <div className="mb-6">
+                        <div className="flex justify-between items-center mb-4">
+                            <h1 className="text-2xl font-bold text-blue-900">UK Driving Theory Test</h1>
+                            <div className="flex items-center text-lg font-medium text-gray-700">
+                                <Clock className="mr-2" size={20} />
+                                <span className={timeLeft < 300 ? 'text-red-600' : ''}>
+                                    {formatTime(timeLeft)}
+                                </span>
                             </div>
                         </div>
-                    )}
 
-                    {/* Review Questions */}
-                    <div className="mb-8">
-                        <h3 className="text-xl font-semibold mb-4">Review Your Answers</h3>
-                        <div className="space-y-4">
-                            {questions.map((question, index) => {
-                                const userAnswer = selectedAnswers[index];
-                                const isCorrect = userAnswer === question.correct;
-
-                                return (
-                                    <div key={index} className={`border rounded-lg p-4 ${
-                                        isCorrect ? 'border-green-200 bg-green-50' : 'border-red-200 bg-red-50'
-                                    }`}>
-                                        <div className="flex items-start">
-                                            <div className={`mr-3 mt-1 ${isCorrect ? 'text-green-600' : 'text-red-600'}`}>
-                                                {isCorrect ? <CheckCircle size={20} /> : <XCircle size={20} />}
-                                            </div>
-                                            <div className="flex-1">
-                                                <div className="flex items-center justify-between mb-2">
-                                                    <p className="font-medium">Q{index + 1}: {question.question}</p>
-                                                    <span className="ml-2 px-2 py-1 text-xs bg-blue-100 text-blue-800 rounded">
-                                                        {question.category}
-                                                    </span>
-                                                </div>
-                                                <div className="grid grid-cols-1 gap-2 mb-3">
-                                                    {question.options.map((option, optIndex) => (
-                                                        <div key={optIndex} className={`p-2 rounded text-sm ${
-                                                            optIndex === question.correct ? 'bg-green-100 text-green-800 font-medium' :
-                                                            optIndex === userAnswer && userAnswer !== question.correct ? 'bg-red-100 text-red-800' :
-                                                            'bg-gray-100 text-gray-600'
-                                                        }`}>
-                                                            {String.fromCharCode(65 + optIndex)}) {option}
-                                                            {optIndex === question.correct && <span className="ml-2 text-green-600">✓ Correct</span>}
-                                                            {optIndex === userAnswer && userAnswer !== question.correct && <span className="ml-2 text-red-600">✗ Your answer</span>}
-                                                        </div>
-                                                    ))}
-                                                </div>
-                                                {question.explanation && (
-                                                    <div className="mt-3 p-3 bg-blue-50 border border-blue-200 rounded text-sm text-blue-800">
-                                                        <strong>Explanation:</strong> {question.explanation}
-                                                    </div>
-                                                )}
-                                            </div>
-                                        </div>
-                                    </div>
-                                );
-                            })}
+                        <div className="bg-gray-200 rounded-full h-2 mb-4">
+                            <div
+                                className="bg-blue-600 h-2 rounded-full transition-all duration-300"
+                                style={{ width: `${progress}%` }}
+                            ></div>
                         </div>
-                    </div>
 
-                    <div className="text-center">
-                        <button
-                            onClick={resetTest}
-                            className="bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-6 rounded-lg transition-colors inline-flex items-center"
-                        >
-                            <RotateCcw className="mr-2" size={20} />
-                            Take Another Test
-                        </button>
-                    </div>
-                </div>
-            );
-        }
-
-        const currentQuestion = questions[currentQuestionIndex];
-        const progress = ((currentQuestionIndex + 1) / questions.length) * 100;
-
-        return (
-            <div className="max-w-4xl mx-auto p-6 bg-white min-h-screen">
-                <div className="mb-6">
-                    <div className="flex justify-between items-center mb-4">
-                        <h1 className="text-2xl font-bold text-blue-900">UK Driving Theory Test</h1>
-                        <div className="flex items-center text-lg font-medium text-gray-700">
-                            <Clock className="mr-2" size={20} />
-                            <span className={timeLeft < 300 ? 'text-red-600' : ''}>
-                                {formatTime(timeLeft)}
+                        <div className="flex justify-between items-center">
+                            <p className="text-gray-600">
+                                Question {currentQuestionIndex + 1} of {questions.length}
+                            </p>
+                            <span className="px-2 py-1 text-xs bg-blue-100 text-blue-800 rounded">
+                                {currentQuestion.category}
                             </span>
                         </div>
                     </div>
 
-                    <div className="bg-gray-200 rounded-full h-2 mb-4">
-                        <div
-                            className="bg-blue-600 h-2 rounded-full transition-all duration-300"
-                            style={{ width: `${progress}%` }}
-                        ></div>
+                    <div className="bg-white border border-gray-200 rounded-lg p-6 mb-6">
+                        <h2 className="text-xl font-medium text-gray-900 mb-6">
+                            {currentQuestion.question}
+                        </h2>
+
+                        <div className="space-y-3">
+                            {currentQuestion.options.map((option, index) => (
+                                <button
+                                    key={index}
+                                    onClick={() => handleAnswerSelect(index)}
+                                    className={`w-full text-left p-4 rounded-lg border-2 transition-colors ${
+                                        selectedAnswers[currentQuestionIndex] === index
+                                            ? 'border-blue-500 bg-blue-50 text-blue-900'
+                                            : 'border-gray-200 hover:border-gray-300 hover:bg-gray-50'
+                                    }`}
+                                >
+                                    <span className="font-medium mr-3">
+                                        {String.fromCharCode(65 + index)})
+                                    </span>
+                                    {option}
+                                </button>
+                            ))}
+                        </div>
                     </div>
 
                     <div className="flex justify-between items-center">
-                        <p className="text-gray-600">
-                            Question {currentQuestionIndex + 1} of {questions.length}
-                        </p>
-                        <span className="px-2 py-1 text-xs bg-blue-100 text-blue-800 rounded">
-                            {currentQuestion.category}
-                        </span>
+                        <button
+                            onClick={handlePreviousQuestion}
+                            disabled={currentQuestionIndex === 0}
+                            className="px-6 py-2 bg-gray-200 text-gray-700 rounded-lg disabled:opacity-50 disabled:cursor-not-allowed hover:bg-gray-300 transition-colors"
+                        >
+                            Previous
+                        </button>
+
+                        <div className="flex space-x-3">
+                            {currentQuestionIndex === questions.length - 1 ? (
+                                <button
+                                    onClick={handleSubmitTest}
+                                    className="px-6 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700 transition-colors"
+                                >
+                                    Submit Test
+                                </button>
+                            ) : (
+                                <button
+                                    onClick={handleNextQuestion}
+                                    className="px-6 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors"
+                                >
+                                    Next
+                                </button>
+                            )}
+                        </div>
+                    </div>
+
+                    <div className="mt-6 p-4 bg-gray-50 rounded-lg">
+                        <div className="flex justify-between items-center text-sm text-gray-600">
+                            <span>
+                                Answered: {Object.keys(selectedAnswers).length} / {questions.length} questions
+                            </span>
+                            <span>
+                                Progress: {Math.round(progress)}%
+                            </span>
+                        </div>
                     </div>
                 </div>
+            );
+        };
 
-                <div className="bg-white border border-gray-200 rounded-lg p-6 mb-6">
-                    <h2 className="text-xl font-medium text-gray-900 mb-6">
-                        {currentQuestion.question}
-                    </h2>
-
-                    <div className="space-y-3">
-                        {currentQuestion.options.map((option, index) => (
-                            <button
-                                key={index}
-                                onClick={() => handleAnswerSelect(index)}
-                                className={`w-full text-left p-4 rounded-lg border-2 transition-colors ${
-                                    selectedAnswers[currentQuestionIndex] === index
-                                        ? 'border-blue-500 bg-blue-50 text-blue-900'
-                                        : 'border-gray-200 hover:border-gray-300 hover:bg-gray-50'
-                                }`}
-                            >
-                                <span className="font-medium mr-3">
-                                    {String.fromCharCode(65 + index)})
-                                </span>
-                                {option}
-                            </button>
-                        ))}
-                    </div>
-                </div>
-
-                <div className="flex justify-between items-center">
-                    <button
-                        onClick={handlePreviousQuestion}
-                        disabled={currentQuestionIndex === 0}
-                        className="px-6 py-2 bg-gray-200 text-gray-700 rounded-lg disabled:opacity-50 disabled:cursor-not-allowed hover:bg-gray-300 transition-colors"
-                    >
-                        Previous
-                    </button>
-
-                    <div className="flex space-x-3">
-                        {currentQuestionIndex === questions.length - 1 ? (
-                            <button
-                                onClick={handleSubmitTest}
-                                className="px-6 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700 transition-colors"
-                            >
-                                Submit Test
-                            </button>
-                        ) : (
-                            <button
-                                onClick={handleNextQuestion}
-                                className="px-6 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors"
-                            >
-                                Next
-                            </button>
-                        )}
-                    </div>
-                </div>
-
-                <div className="mt-6 p-4 bg-gray-50 rounded-lg">
-                    <div className="flex justify-between items-center text-sm text-gray-600">
-                        <span>
-                            Answered: {Object.keys(selectedAnswers).length} / {questions.length} questions
-                        </span>
-                        <span>
-                            Progress: {Math.round(progress)}%
-                        </span>
-                    </div>
-                </div>
-            </div>
-        );
-    };
-
-    ReactDOM.render(<DrivingTheoryTest />, document.getElementById('root'));
-</script>v.2.0.0
-
+        ReactDOM.render(<DrivingTheoryTest />, document.getElementById('root'));
+    </script>
 </body>
 </html>
