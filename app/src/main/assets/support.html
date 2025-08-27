@@ -1,48 +1,70 @@
-
 <!DOCTYPE html>
 <html lang="en-GB">
 <head><title>Support</title>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link href="tailwind.min.css" rel="stylesheet">  <style>
-    body { background-color: #f7f9fc; font-family: 'Segoe UI', sans-serif; }
-    .btn {
-      display: inline-block;
-      text-align: center;
-      padding: 0.75rem 1.5rem;
-      font-size: 1rem;
-      background-color: #007aff;
-      color: white;
-      border-radius: 0.5rem;
-      margin: 0.5rem 0;
-      text-decoration: none;
-      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-    }
-    .btn:hover { background-color: #005bb5; }
-    .back-button {
-      background-color: #e5e7eb;
-      color: #111827;
-      padding: 0.5rem 1rem;
-      border-radius: 0.375rem;
-      font-weight: 600;
-      margin-top: 1rem;
-      box-shadow: 0 2px 4px rgba(0,0,0,0.06);
-    }
-    .back-button:hover { background-color: #d1d5db; }
-  </style>
+    <meta http-equiv="Content-Security-Policy"
+          content="
+        default-src 'self';
+        img-src 'self' data:;
+        style-src 'self' 'unsafe-inline';
+        script-src 'self' 'unsafe-inline';
+        object-src 'none';
+        base-uri 'none';
+        frame-ancestors 'none';
+      ">
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <link href="tailwind.min.css" rel="stylesheet">
+    <link href="app.css" rel="stylesheet">
+    <style>
+        body {
+      padding-top: env(safe-area-inset-top);
+      padding-bottom: env(safe-area-inset-bottom);
+      padding-left: env(safe-area-inset-left);
+      padding-right: env(safe-area-inset-right);
+    background-color: #f7f9fc; font-family: 'Segoe UI', sans-serif; }
+        .btn {
+          display: inline-block;
+          text-align: center;
+          padding: 0.75rem 1.5rem;
+          font-size: 1rem;
+          background-color: #007aff;
+          color: white;
+          border-radius: 0.5rem;
+          margin: 0.5rem 0;
+          text-decoration: none;
+          box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .btn:hover { background-color: #005bb5; }
+        .back-button {
+          background-color: #e5e7eb;
+          color: #111827;
+          padding: 0.5rem 1rem;
+          border-radius: 0.375rem;
+          font-weight: 600;
+          margin-top: 1rem;
+          box-shadow: 0 2px 4px rgba(0,0,0,0.06);
+        }
+        .back-button:hover { background-color: #d1d5db; }
+    </style>
 </head>
 <body style="max-width: 600px; margin: 0 auto; padding: 20px;">
-<p><br></p><p><br></p>
-<h2>Support This App</h2>
-  <p>This app is completely free. If you’ve found it helpful, consider supporting <strong>James Murrell</strong> by scanning the QR code or clicking the button below.</p>
-  <img src="pp_my_qrcode_1753473772617.jpg" alt="PayPal QR Code"><br>
-  <a href="https://www.paypal.me/JamesMurrell" target="_blank"><button class="btn">Donate via PayPal</button></a>
+<div class="page">
+    <p><br></p>
+    <p><br></p>
+    <h2>Support This App</h2>
+    <p>This app is completely free. If you’ve found it helpful, consider supporting <strong>James
+        Murrell</strong> by scanning the QR code or clicking the button below.</p>
+    <img src="pp_my_qrcode_1753473772617.jpg" alt="PayPal QR Code"><br>
+    <a href="https://www.paypal.me/JamesMurrell" target="_blank">
+        <button class="btn">Donate via PayPal</button>
+    </a>
 
-<button onclick="window.history.back()" class="bg-gray-300 hover:bg-gray-400 text-black font-semibold py-2 px-4 rounded shadow">
-  ⬅️ Go Back
-</button>
-<p><br></p><p><br></p>
-v.2.0.0
-
+    <button onclick="window.history.back()"
+            class="bg-gray-300 hover:bg-gray-400 text-black font-semibold py-2 px-4 rounded shadow">
+        ⬅️ Go Back
+    </button>
+    <p><br></p>
+    <p><br></p>
+    </div>
 </body>
 </html>

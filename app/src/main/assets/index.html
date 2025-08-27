@@ -1,14 +1,33 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8" />
+    <link rel="preload" as="image" href="cartoon_banner.webp" type="image/webp">
+
+    <meta http-equiv="Content-Security-Policy"
+          content="
+        default-src 'self';
+        img-src 'self' data:;
+        style-src 'self' 'unsafe-inline';
+        script-src 'self' 'unsafe-inline';
+        object-src 'none';
+        base-uri 'none';
+        frame-ancestors 'none';
+      ">
+    <meta charset="UTF-8"/>
     <title>UK Theory Test - Home</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link href="tailwind.min.css" rel="stylesheet">    <style>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <link href="tailwind.min.css" rel="stylesheet">
+    <link href="app.css" rel="stylesheet">
+
+    <!-- Preload readiness badge images (faster first paint) -->
+    <link rel="preload" as="image" href="badges/badge_ready.webp" type="image/webp">
+    <link rel="preload" as="image" href="badges/badge_almost.webp" type="image/webp">
+    <link rel="preload" as="image" href="badges/badge_practice.webp" type="image/webp">
+
+    <style>
         body { background-color: #f7f9fc; font-family: 'Segoe UI', sans-serif; }
         .hero {
-          background: url('cartoon_banner.png') center/cover no-repeat;
+          background: url('cartoon_banner.webp') center/cover no-repeat;
           height: 70vh;
           display: flex;
           justify-content: center;
@@ -25,8 +44,6 @@
           display: block;
           width: 100%;
           text-align: center;
-          padding: 1rem;
-          margin-bottom: 1rem;
           font-size: 1.125rem;
           background-color: #007aff;
           color: white;
@@ -34,52 +51,131 @@
           box-shadow: 0 4px 6px rgba(0,0,0,0.1);
           text-decoration: none;
         }
-        .btn:hover {
-          background-color: #005bb5;
+        .menu {
+          display: flex;
+          flex-direction: column;
+          gap: 0.25rem;
+          max-width: 400px;
+          margin: 1.25rem auto;
         }
-      .menu {
-    display: flex;
-    flex-direction: column;
-    gap: 0.75rem;
-    max-width: 400px;
-    margin: 2rem auto;
-    padding: 1rem;
-  }
-
-  .menu a {
-    display: block;
-    text-decoration: none;
-    background-color: #005bb5; /* dark gray */
-    color: white;
-    padding: 0.75rem 1rem;
-    border-radius: 8px;
-    font-size: 1.1rem;
-    text-align: center;
-    transition: background-color 0.2s ease;
-  }
-
-  .menu a:hover {
-    background-color: #111827;
-  }
+        .menu a {
+          display: block;
+          text-decoration: none;
+          background-color: #005bb5;
+          color: white;
+          padding: 0.75rem 1rem;
+          border-radius: 8px;
+          font-size: 1.1rem;
+          text-align: center;
+          transition: background-color 0.2s ease;
+        }
     </style>
 </head>
 <body class="text-center">
+<div class="page">
 
-<div class="hero">
-</div>
+    <div class="hero"></div>
+    <div id="home-readiness" class="text-center mb-2"></div>
 
-<div class="menu">
-    <a href="randomized_theory_test.html" class="btn">📋 Start Theory Test</a>
-    <a href="road_sign_quiz.html" class="btn">🚧 Road Sign Quiz</a>
-    <a href="uk_road_signs_mobile_friendly_final.html" class="btn">💡 Road Sign Gallery</a>
-    <a href="vehicle_safety_questions.html" class="btn">🛑 Vehicle Safety Questions</a>
-    <a href="support.html" class="btn">❤️ Support Ed</a>
-    <a href="about.html">ℹ️ About Ed</a>
+    <div class="menu">
+        <a href="randomized_theory_test.html" class="btn">📋 Start Theory Test</a>
+        <a href="road_sign_quiz.html" class="btn">🚧 Road Sign Quiz</a>
+        <a href="uk_road_signs_mobile_friendly_final.html" class="btn">💡 Road Sign Gallery</a>
+        <a href="vehicle_safety_questions.html" class="btn">🛑 Vehicle Safety Questions</a>
+        <a href="about.html">ℹ️ About Ed</a>
+        <a href="market://details?id=com.james.murrell.edstheorytest" class="btn">⭐ Rate the App</a>
+        <a href="support.html" class="btn">❤️ Support Ed</a>
 
+        <div class="mt-2">
+            <div class="text-sm text-gray-600 text-center mb-2">Share this app</div>
+            <div class="flex flex-wrap justify-center gap-2">
+                <a href="#" onclick="shareNative(); return false;"
+                   class="inline-flex items-center px-3 py-1.5 text-sm rounded-md border border-gray-300 bg-white text-gray-800 hover:bg-gray-50 shadow-sm">📤
+                    Share</a>
+                <a id="btn-copy" href="#" onclick="copyShareLink(); return false;"
+                   class="inline-flex items-center px-3 py-1.5 text-sm rounded-md border border-gray-300 bg-white text-gray-800 hover:bg-gray-50 shadow-sm">🔗
+                    Copy link</a>
+                <a id="btn-wa"
+                   class="inline-flex items-center px-3 py-1.5 text-sm rounded-md border border-gray-300 bg-white text-gray-800 hover:bg-gray-50 shadow-sm">🟢
+                    WhatsApp</a>
+                <a id="btn-sms"
+                   class="inline-flex items-center px-3 py-1.5 text-sm rounded-md border border-gray-300 bg-white text-gray-800 hover:bg-gray-50 shadow-sm">💬
+                    SMS</a>
+                <a id="btn-email"
+                   class="inline-flex items-center px-3 py-1.5 text-sm rounded-md border border-gray-300 bg-white text-gray-800 hover:bg-gray-50 shadow-sm">✉️
+                    Email</a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        (function () {
+          const BOOK_URL = "https://www.gov.uk/book-theory-test";
+          function getMockHistory(){ try{ return JSON.parse(localStorage.getItem("mockHistory")||"[]"); }catch(_){return[];} }
+          function readinessFromHistory(h){
+            if(!h.length) return {label:"Keep practising", avg:null, tier:"low"};
+            const last=h.slice(-5); const avg=Math.round(last.reduce((a,b)=>a+(b.pct||0),0)/last.length);
+            if(avg>=90) return {label:"Ready to book", avg, tier:"high"};
+            if(avg>=80) return {label:"Almost there", avg, tier:"mid"};
+            return {label:"Keep practising", avg, tier:"low"};
+          }
+          const r=readinessFromHistory(getMockHistory());
+          const src={high:"badges/badge_ready.webp",mid:"badges/badge_almost.webp",low:"badges/badge_practice.webp"}[r.tier]||"badges/badge_practice.webp";
+          const label=`${r.label}${typeof r.avg==="number" ? ` • last avg ${r.avg}%` : ""}`;
+          const el=document.getElementById("home-readiness");
+          if(!el) return;
+          el.innerHTML = (r.tier==="high" ? `<a href="${BOOK_URL}" target="_blank" rel="noopener">` : `<span>`)
+            + `<span class="inline-flex items-center gap-3">
+                 <img src="${src}" alt="${r.label}" width="64" height="78" loading="lazy" style="height:78px;width:auto;">
+                 <span class="text-xs text-gray-800">${label}</span>
+               </span>`
+            + (r.tier==="high" ? `</a>` : `</span>`)
+            + `<div class="text-[10px] text-gray-500 mt-1">Based on your last 5 mocks</div>`;
+        })();
+    </script>
+
+    <script>
+        (function () {
+          const PLAY_URL = "https://play.google.com/store/apps/details?id=com.james.murrell.edstheorytest";
+          const MESSAGE = "Free, ad-free UK Driving Theory Test practice app:";
+
+          const encoded = encodeURIComponent(`${MESSAGE} ${PLAY_URL}`);
+          document.getElementById("btn-wa").href   = `https://wa.me/?text=${encoded}`;
+          document.getElementById("btn-sms").href  = `sms:?body=${encoded}`;
+          document.getElementById("btn-email").href= `mailto:?subject=${encodeURIComponent("Ed’s Driving Theory Test")}&body=${encoded}`;
+
+          // Copy-to-clipboard (works under file:// with fallback)
+          window.copyShareLink = function () {
+            const text = `${MESSAGE} ${PLAY_URL}`;
+            try {
+              if (navigator.clipboard && navigator.clipboard.writeText) {
+                navigator.clipboard.writeText(text).then(() => alert("Link copied to clipboard"));
+                return;
+              }
+            } catch (e) {}
+            const ta = document.createElement("textarea");
+            ta.value = text;
+            document.body.appendChild(ta);
+            ta.select();
+            try { document.execCommand("copy"); } catch (e) {}
+            document.body.removeChild(ta);
+            alert("Link copied to clipboard");
+          };
+
+          // Try native share sheet if supported; fallback to copy
+          window.shareNative = function () {
+            const text = `${MESSAGE} ${PLAY_URL}`;
+            if (navigator.share) {
+              navigator.share({ title: "Ed’s Driving Theory Test", text, url: PLAY_URL })
+                .catch(() => copyShareLink());
+            } else {
+              copyShareLink();
+            }
+          };
+        })();
+    </script>
+    <p><br></p> v.6.0.0<p><br></p>
     <p><br></p>
-    v.2.0.0
-
 </div>
-
 </body>
 </html>
